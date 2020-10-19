@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { registerUser } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 
-
 function RegisterPage(props) {
   const dispatch = useDispatch();
   return (
