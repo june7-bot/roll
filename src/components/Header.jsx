@@ -10,7 +10,7 @@ const S = {
     z-index: 1000;
     transition: all 0.2s ease-in-out;
     background-color: ${({ isScroll, theme }) =>
-      isScroll ? theme.palette.white : 'none'};
+    theme.palette.white};
     box-shadow: ${props =>
       props.isScroll ? '0 0 16px 8px rgba(0, 0, 0, 0.03)' : 'none'};
   `,
@@ -26,7 +26,7 @@ const S = {
   `,
   Logo: styled.span`
     color: ${({ isScroll, theme }) =>
-      isScroll ? theme.palette.black : theme.palette.white};
+    isScroll = theme.palette.black};
     font-weight: 900;
     font-size: 1.5rem;
     flex: 0 0 25%;
@@ -41,7 +41,7 @@ const S = {
   NavigationItem: styled.a`
     color: ${props => props.theme.palette.white};
     color: ${({ isScroll, theme }) =>
-      isScroll ? theme.palette.black : theme.palette.white};
+      isScroll = theme.palette.black };
     margin: 0 1rem;
     cursor: pointer;
     &:hover {
@@ -56,7 +56,7 @@ const S = {
   `,
 };
 
-const NAVIGATION_ITEMS = ['Home', 'About', 'Services', 'Blog', 'Contact'];
+const NAVIGATION_ITEMS = ['홈으로','도그블록이란', '강아지들','기타'];
 
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
@@ -80,7 +80,7 @@ const Header = () => {
   return (
     <S.Wrapper isScroll={isScroll}>
       <S.Header isScroll={isScroll}>
-        <S.Logo isScroll={isScroll}>Lorem</S.Logo>
+        <S.Logo isScroll={isScroll}>도그블록</S.Logo>
         <S.Navigation>
           {NAVIGATION_ITEMS.map(item => (
             <S.NavigationItem key={item} isScroll={isScroll}>
@@ -89,8 +89,13 @@ const Header = () => {
           ))}
         </S.Navigation>
         <S.ButtonWrapper>
-          <Button fill="solid" type="button" style={{ marginLeft: 'auto' }}>
-            Get a Quote
+          <Button as = "a" href="/register" fill="solid" type="button" style={{ marginLeft: 'auto' }}>
+           회원가입하기
+          </Button>
+        </S.ButtonWrapper>
+        <S.ButtonWrapper>
+          <Button as = "a" href = "/register" fill="solid" type="button" style={{ marginLeft: 'auto' }}>
+           로그인하기
           </Button>
         </S.ButtonWrapper>
       </S.Header>

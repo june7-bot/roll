@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { featureImage } from '../../../assets';
-import { useScrollClipPath } from '../../../hooks';
+
 
 const S = {
   Wrapper: styled.section`
@@ -61,25 +61,23 @@ const S = {
 };
 
 const FEAURE_ITEMS = [
-  'A lacus vestibulum sed arcu non odio euismod lacinia.',
-  'In tellus integer feugiat scelerisque.',
-  'Feugiat in fermentum posuere urna nec tincidunt',
+  '강아지 유기 방지',
+  '@#',
+  '~!',
 ];
 
 const Feature = () => {
-  const animatedImage = useScrollClipPath();
+ 
 
   return (
     <S.Wrapper>
       <S.TextWrapper>
-        <S.Label>Our Features</S.Label>
+        <S.Label>도그블록만의 특별함</S.Label>
         <S.Title>
-          Pulvinar elementum <br />
-          integer enim neque
+         블록체인 기술 도입
         </S.Title>
         <S.Description>
-          Senectus et netus et malesuada. Nunc pulvinar sapien et ligula
-          ullamcorper malesuada proin. Neque convallis a cras semper auctor.
+         
         </S.Description>
         <S.List>
           {FEAURE_ITEMS.map((item, index) => (
@@ -88,9 +86,9 @@ const Feature = () => {
             </S.ListItem>
           ))}
         </S.List>
-        <S.TextButton>Read more about our serives</S.TextButton>
+        <S.TextButton>더 보기</S.TextButton>
       </S.TextWrapper>
-      <S.Image {...animatedImage} />
+      <S.Image />
     </S.Wrapper>
   );
 };

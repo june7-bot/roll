@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useScrollCount } from '../../../hooks';
+
 
 const S = {
   Background: styled.section`
@@ -71,26 +71,12 @@ const FIGURE_ITEMS = [
 ];
 
 const Figure = () => {
-  const countItem = {
-    0: useScrollCount(630),
-    1: useScrollCount(124),
-    2: useScrollCount(92),
-  };
 
   return (
     <S.Background>
       <S.Wrapper>
-        <S.List>
-          {FIGURE_ITEMS.map((item, index) => (
-            <S.ListItem key={item.title}>
-              <S.Number {...countItem[index]}>0</S.Number>
-              <S.Unit>{item.unit}</S.Unit>
-              <S.Title>{item.title}</S.Title>
-              <S.Description>{item.description}</S.Description>
-            </S.ListItem>
-          ))}
-        </S.List>
-      </S.Wrapper>
+              <S.Description>분양된 강아지들</S.Description>
+      </S.Wrapper> 
     </S.Background>
   );
 };

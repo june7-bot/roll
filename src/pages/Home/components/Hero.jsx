@@ -38,18 +38,11 @@ const Hero = () => {
     <S.Background>
       <S.Wrapper>
         <S.Title>
-          Lorem ipsum
-          <br />
-          Dolor sit amet
+        가족이 되어주세요
         </S.Title>
         <S.Description>
-          Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          <br />
-          labore et dolore magna aliqua. Nisl tincidunt eget nullam non.
+         !@#@#@$#$#$
         </S.Description>
-        <Button fill="solid" type="button">
-          Our Services
-        </Button>
       </S.Wrapper>
     </S.Background>
   );

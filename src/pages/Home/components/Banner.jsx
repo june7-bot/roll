@@ -35,15 +35,13 @@ const Banner = () => {
 
   return (
     <S.Wrapper>
-      <S.Label {...animatedItem[0]}>Get Started</S.Label>
+      <S.Label {...animatedItem[0]}>도그 블록</S.Label>
       <S.Title {...animatedItem[1]}>
-        Etiam erat velit
-        <br />
-        scelerisque in dictum
+        가족이 되어주세요
       </S.Title>
       <div {...animatedItem[2]}>
         <Button fill="solid" type="button">
-          Get a Quote
+          분양 하기
         </Button>
       </div>
     </S.Wrapper>

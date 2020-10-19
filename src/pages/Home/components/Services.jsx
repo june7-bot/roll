@@ -60,22 +60,22 @@ const S = {
 
 const SERVICES_ITEMS = [
   {
-    title: 'Volutpat odio',
+    title: '유기견X',
     description:
-      'Facilisis mauris sit amet massa. Commodo odio aenean sed adipiscing. In hac habitasse platea dictumst quisque sagittis purus.',
-    button: 'Get started',
+      '@#@!',
+
   },
   {
-    title: 'Diam donec',
+    title: '강아지 공장X',
     description:
-      'Adipiscing tristique. Mi eget mauris pharetra et. Non tellus orci ac auctor augue. Pulvinar elementum integer enim neque volutpat ac.',
-    button: 'Switch over',
+      '@#@!',
+  
   },
   {
-    title: 'Elit at imperdiet',
+    title: '3',
     description:
-      'Dui accumsan sit. Ornare arcu dui vivamus arcu felis. Egestas integer eget aliquet nibh praesent.',
-    button: 'Read more',
+      '@#@!',
+ 
   },
 ];
 
@@ -88,11 +88,8 @@ const Services = () => {
 
   return (
     <S.Wrapper>
-      <S.Label>Our Services</S.Label>
       <S.Title>
-        Quis hendrerit dolor
-        <br />
-        Magna eget est
+       반려동물 문화 함께 만들어가요
       </S.Title>
       <S.ItemWrapper>
         {SERVICES_ITEMS.map((item, index) => (

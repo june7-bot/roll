@@ -79,24 +79,24 @@ const S = {
 const WORKS_ITEMS = [
   {
     image: worksImage01,
-    title: 'Volutpat odio',
-    label: 'Dec 14th, 2019',
+    title: '이름',
+    label: '출생연도',
     description:
-      'Facilisis mauris sit amet massa. Commodo odio aenean sed adipiscing. In hac habitasse platea dictumst.',
+      '특징',
   },
   {
     image: worksImage02,
-    title: 'Arcu ac tortor dignissim',
-    label: 'Dec 14th, 2019',
+    title: '이름',
+    label: '출생연도',
     description:
-      'Convallis aenean et tortor at. Pretium viverra suspendisse potenti nullam ac tortor vitae purus.',
+      '특징',
   },
   {
     image: worksImage03,
-    title: 'Eros donec ac odio',
-    label: 'Dec 14th, 2019',
+    title: '이름',
+    label: '출생연도',
     description:
-      'Tempor orci dapibus ultrices. Elementum nibh tellus molestie nunc. Et magnis dis parturient montes nascetur.',
+      '특징',
   },
 ];
 
@@ -109,14 +109,10 @@ const Works = () => {
 
   return (
     <S.Wrapper>
-      <S.Label>Our Recent Works</S.Label>
+      
       <S.Title>
-        Et malesuada fames ac <br />
-        turpis egestas sed
+         반려견들
       </S.Title>
-      <S.Description>
-        Sit amet nisl suscipit adipiscing bibendum est ultricies.
-      </S.Description>
       <S.List>
         {WORKS_ITEMS.map((item, index) => (
           <S.ListItem key={item.title} {...animatedItem[index]}>
@@ -125,12 +121,12 @@ const Works = () => {
               <S.ItemTitle>{item.title}</S.ItemTitle>
               <S.ItemLabel>{item.label}</S.ItemLabel>
               <S.ItemDesciption>{item.description}</S.ItemDesciption>
-              <S.TextButton>Read more</S.TextButton>
+              <S.TextButton>자세히</S.TextButton>
             </S.TextContainer>
           </S.ListItem>
         ))}
       </S.List>
-      <Button fill="outline">More Works</Button>
+      <Button fill="outline">반려견들 더 보기</Button>
     </S.Wrapper>
   );
 };
