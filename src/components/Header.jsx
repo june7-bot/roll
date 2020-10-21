@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { useSelector } from "react-redux";
+import axios from 'axios';
 
 const S = {
   Wrapper: styled.div`
@@ -34,7 +36,9 @@ const S = {
   `,
   Navigation: styled.div`
     flex: 0 0 50%;
+    font-weight: 900;
     max-width: 50%;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
   `,
@@ -49,8 +53,9 @@ const S = {
     }
   `,
   ButtonWrapper: styled.div`
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 0 0 300px;
+    max-width: 17%;
+  
     display: flex;
     justify-content: flex-end;
   `,
@@ -58,7 +63,16 @@ const S = {
 
 const NAVIGATION_ITEMS = ['홈으로','도그블록이란', '강아지들','기타'];
 
-const Header = () => {
+export default function Header() {
+
+  const user = useSelector(state => state.user)
+
+  const logoutHandler = () => {
+    sessionStorage.clear();
+    window.location.href = '/';
+  }
+
+
   const [isScroll, setIsScroll] = useState(false);
 
   const handleScroll = useCallback(() => {
@@ -77,7 +91,32 @@ const Header = () => {
     };
   }, [handleScroll]);
 
+
+  if(user.userData && user.userData.isAuth) { 
+    return (
+      <S.Wrapper isScroll={isScroll}>
+      <S.Header isScroll={isScroll}>
+        <S.Logo isScroll={isScroll}>도그블록</S.Logo>
+        <S.Navigation>
+          {NAVIGATION_ITEMS.map(item => (
+            <S.NavigationItem key={item} isScroll={isScroll}>
+              {item}
+            </S.NavigationItem>
+          ))}
+        </S.Navigation>
+       
+        <S.ButtonWrapper>
+          <Button onClick={ logoutHandler } fill="solid" type="button">
+           로그아웃
+          </Button>
+        </S.ButtonWrapper>
+      </S.Header>
+    </S.Wrapper>
+  )}
+  else {
   return (
+
+    
     <S.Wrapper isScroll={isScroll}>
       <S.Header isScroll={isScroll}>
         <S.Logo isScroll={isScroll}>도그블록</S.Logo>
@@ -88,19 +127,21 @@ const Header = () => {
             </S.NavigationItem>
           ))}
         </S.Navigation>
+       
         <S.ButtonWrapper>
-          <Button as = "a" href="/register" fill="solid" type="button" style={{ marginLeft: 'auto' }}>
-           회원가입하기
+          <Button as = "a" href="/register" fill="solid" type="button">
+           회원가입
           </Button>
         </S.ButtonWrapper>
         <S.ButtonWrapper>
-          <Button as = "a" href = "/register" fill="solid" type="button" style={{ marginLeft: 'auto' }}>
-           로그인하기
+          <Button as = "a" href = "/login" fill="solid" type="button">
+           로그인
           </Button>
         </S.ButtonWrapper>
       </S.Header>
     </S.Wrapper>
   );
+
+};
 };
 
-export default Header;
