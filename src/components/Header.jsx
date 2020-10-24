@@ -63,6 +63,7 @@ const S = {
 
 const NAVIGATION_ITEMS = ['홈으로','도그블록이란', '강아지들','기타'];
 
+
 export default function Header() {
 
   const user = useSelector(state => state.user)
@@ -98,11 +99,17 @@ export default function Header() {
       <S.Header isScroll={isScroll}>
         <S.Logo isScroll={isScroll}>도그블록</S.Logo>
         <S.Navigation>
-          {NAVIGATION_ITEMS.map(item => (
-            <S.NavigationItem key={item} isScroll={isScroll}>
-              {item}
+            <S.NavigationItem href = {'/'}  isScroll={isScroll}>
+                 홈으로
             </S.NavigationItem>
-          ))}
+          
+            <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
+                 강아지 등록
+            </S.NavigationItem>
+
+            <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
+                 강아지들
+            </S.NavigationItem>
         </S.Navigation>
        
         <S.ButtonWrapper>
