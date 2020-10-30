@@ -2,11 +2,12 @@ import React from "react";
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { registerUser } from "../../_actions/user_actions";
+import { changePassword } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components'
 
   const S = {
+  
     Header: styled.div`
     padding-top: 142px;
     padding-bottom: 50px;
@@ -71,22 +72,19 @@ import styled from 'styled-components'
 
 
 
-function Register(props) {
+function PwChange(props) {
+  const id = props.match.params.userId;
   const dispatch = useDispatch();
   return (
     
 
     <Formik
       initialValues={{
-        email: '',
+    
         password: '',
         confirmPassword: ''
       }}
       validationSchema={Yup.object().shape({
-
-        email: Yup.string()
-          .email('Email is invalid')
-          .required('Email is required'),
         password: Yup.string()
           .min(6, 'Password must be at least 6 characters')
           .required('Password is required'),
@@ -98,12 +96,11 @@ function Register(props) {
         setTimeout(() => {
 
           let dataToSubmit = {  
-            email: values.email,
-            password: values.password,
-           
+            email : id,
+            password: values.password
           };
 
-          dispatch(registerUser(dataToSubmit)).then(response => {
+          dispatch(changePassword(dataToSubmit)).then(response => {
             if (response.payload) {
               props.history.push("/login");
             } else {
@@ -129,27 +126,11 @@ function Register(props) {
         } = props;
         return (
 <S.Wrapper>
-<S.Header>회원가입</S.Header>
+<S.Header>{id}님 비밀번호 변경</S.Header>
+
           <S.Content>
         
-
-              <S.FormWrap>
-              <S.Ilable for = "email">이메일 입력 :</S.Ilable>
-                <S.Box
-                  id="email"
-                  placeholder="Enter your Email"
-                  type="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.email && touched.email ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.email && touched.email && (
-                  <S.inputfeedback>{errors.email}</S.inputfeedback>
-                )}
-              </S.FormWrap>
+          
 
               <S.FormWrap>
               <S.Ilable for = "password">비밀번호 입력 :</S.Ilable>
@@ -189,7 +170,7 @@ function Register(props) {
 
               <S.btnForm>
                 <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                  Submit
+                  제출
                 </S.btn>
               </S.btnForm>
           </S.Content>
@@ -201,4 +182,5 @@ function Register(props) {
 };
 
 
-export default Register
+export default PwChange
+

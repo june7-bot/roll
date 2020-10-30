@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik'; 
 import { registerDog } from "../../_actions/dog_action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { USER_SERVER } from '../../pages/Config';
 
@@ -71,7 +71,7 @@ const S = {
 
 export default function DogRegister(props) {
     const dispatch = useDispatch();
-    
+    const id = useSelector(state => state.user.userData)
     const [file, setFile] = useState('');
 
     return (
@@ -81,7 +81,7 @@ export default function DogRegister(props) {
           initialValues={{
             name: '',
             price: '',
-            nose : ''
+          
           }}
           validate={values => {
             const errors = {};
@@ -95,26 +95,21 @@ export default function DogRegister(props) {
           onSubmit={(values, { setSubmitting }) => {
         
             let formData =  new FormData();
-            formData.append('file', file) 
+            formData.append('file', file);
+            formData.append('name', values.name);
+            formData.append('price', values.price);
+            formData.append('owner', id.userId)
          
             setTimeout(() => {
 
-              let dataToSubmit = {  
-                  name : values.name,
-                  price : values.price,     
-               }; 
+              dispatch(registerDog(formData)).then(response => {
+          
+                   if (response.payload) {
 
-              dispatch(registerDog(dataToSubmit)).then(response => {
-              
-                if (response.payload) {
-                  
-                  axios.post("/api/dog/photo", formData)
-
-
-                  props.history.push("/doglist");
-                } else {
-                  alert('에러발생');
-                }
+                   props.history.push("/doglist");
+                 } else {
+                   alert('에러발생');
+                 }
               })
               setSubmitting(false);
             }, 500);
@@ -171,7 +166,6 @@ export default function DogRegister(props) {
                           id="file"
                           placeholder="Enter your nose"
                           type="file"
-                          value={values.nose}
                           accept = ".jpg"
                           onChange={(e) => setFile(e.target.files[0]) }
                           onBlur={handleBlur}

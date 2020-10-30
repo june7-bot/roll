@@ -61,7 +61,7 @@ const S = {
   `,
 };
 
-const NAVIGATION_ITEMS = ['홈으로','도그블록이란', '강아지들','기타'];
+
 
 
 export default function Header() {
@@ -93,7 +93,7 @@ export default function Header() {
   }, [handleScroll]);
 
 
-  if(user.userData && user.userData.isAuth) { 
+  if(user.userData && user.userData.isAdmin ) { 
     return (
       <S.Wrapper isScroll={isScroll}>
       <S.Header isScroll={isScroll}>
@@ -111,7 +111,11 @@ export default function Header() {
                  강아지들
             </S.NavigationItem>
         </S.Navigation>
-       
+        <S.ButtonWrapper>
+          <Button as = "a" href="/admin" fill="solid" type="button">
+           관리자페이지
+          </Button>
+        </S.ButtonWrapper>
         <S.ButtonWrapper>
           <Button onClick={ logoutHandler } fill="solid" type="button">
            로그아웃
@@ -120,7 +124,39 @@ export default function Header() {
       </S.Header>
     </S.Wrapper>
   )}
-  else {
+  else if(user.userData && user.userData.isAuth){
+    return(
+    <S.Wrapper isScroll={isScroll}>
+    <S.Header isScroll={isScroll}>
+      <S.Logo isScroll={isScroll}>도그블록</S.Logo>
+      <S.Navigation>
+          <S.NavigationItem href = {'/'}  isScroll={isScroll}>
+               홈으로
+          </S.NavigationItem>
+        
+          <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
+               강아지 등록
+          </S.NavigationItem>
+
+          <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
+               강아지들
+          </S.NavigationItem>
+      </S.Navigation>
+      <S.ButtonWrapper>
+        <Button as = "a" href="/mypage" fill="solid" type="button">
+         마이페이지
+        </Button>
+      </S.ButtonWrapper>
+      <S.ButtonWrapper>
+        <Button onClick={ logoutHandler } fill="solid" type="button">
+         로그아웃
+        </Button>
+      </S.ButtonWrapper>
+    </S.Header>
+  </S.Wrapper>
+)
+} else{
+    
   return (
 
     
@@ -128,11 +164,17 @@ export default function Header() {
       <S.Header isScroll={isScroll}>
         <S.Logo isScroll={isScroll}>도그블록</S.Logo>
         <S.Navigation>
-          {NAVIGATION_ITEMS.map(item => (
-            <S.NavigationItem key={item} isScroll={isScroll}>
-              {item}
+            <S.NavigationItem href = {'/'}  isScroll={isScroll}>
+                 홈으로
             </S.NavigationItem>
-          ))}
+          
+            <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
+                 강아지 등록
+            </S.NavigationItem>
+
+            <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
+                 강아지들
+            </S.NavigationItem>
         </S.Navigation>
        
         <S.ButtonWrapper>
