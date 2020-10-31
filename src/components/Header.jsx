@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+
 import { useSelector } from "react-redux";
+import imgA from '../assets/logo.PNG';
+import { Link } from 'react-router-dom'
+import { Button } from 'reactstrap';
 import axios from 'axios';
 
 const S = {
@@ -61,8 +64,11 @@ const S = {
   `,
 };
 
-
-
+const NAVIGATION_ITEMS = [<Link to='/'>홈으로</Link>,
+                          <Link to='/about'>도그블록이란</Link>,
+                          <Link to='/board'>강아지들</Link>,
+                          <Link to='/'>기타</Link>,
+                          ];
 
 export default function Header() {
 
@@ -97,7 +103,17 @@ export default function Header() {
     return (
       <S.Wrapper isScroll={isScroll}>
       <S.Header isScroll={isScroll}>
-        <S.Logo isScroll={isScroll}>도그블록</S.Logo>
+        <S.Logo isScroll={isScroll}>
+        <div>
+          <a href='/'>
+        <img
+         src={ imgA }
+         width='120'
+        height='73'
+        alt='testA' />
+        </a>
+        </div>
+          </S.Logo>
         <S.Navigation>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
@@ -162,7 +178,17 @@ export default function Header() {
     
     <S.Wrapper isScroll={isScroll}>
       <S.Header isScroll={isScroll}>
-        <S.Logo isScroll={isScroll}>도그블록</S.Logo>
+        <S.Logo isScroll={isScroll}>
+        <div>
+          <a href='/'>
+        <img
+         src={ imgA }
+         width='120'
+        height='73'
+        alt='testA' />
+        </a>
+        </div>
+        </S.Logo>
         <S.Navigation>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
@@ -176,17 +202,16 @@ export default function Header() {
                  강아지들
             </S.NavigationItem>
         </S.Navigation>
-       
-        <S.ButtonWrapper>
-          <Button as = "a" href="/register" fill="solid" type="button">
+    
+        
+          <Button color="cyan" as = "a" href="/registerc" type="button" style={{ textDecoration: 'none' }}>
            회원가입
           </Button>
-        </S.ButtonWrapper>
-        <S.ButtonWrapper>
-          <Button as = "a" href = "/login" fill="solid" type="button">
+          <Button color="" as = "a" href = "/login" type="button" style={{ textDecoration: 'none' }}>
            로그인
           </Button>
-        </S.ButtonWrapper>
+        
+        
       </S.Header>
     </S.Wrapper>
   );

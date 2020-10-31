@@ -1,69 +1,11 @@
 import { Checkbox, Radio } from 'antd';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
-import { registerUser } from '../../_actions/user_actions';
-import { withRouter } from 'react-router-dom';
 
-function Register(props) {
-  
-      const dispatch = useDispatch();
-  
-      const [Email, setEmail] = useState("")
-      const [Password, setPassword] = useState("")
-      const [Name, setName] = useState("")
-      const [ConfirmPassword, setConfirmPassword] = useState("")
-  
-      const onEmailHandler = (event) =>{
-  
-          setEmail(event.currentTarget.value)
-      }
-  
-      const onPasswordHandler = (event) => {
-          setPassword(event.currentTarget.value)
-      }
-  
-      const onNameHandler = (event) => {
-          setName(event.currentTarget.value)
-      }
-  
-      const onConfirmPasswordHandler = (event) => {
-          setConfirmPassword(event.currentTarget.value)
-      }
-  
-      const onSubmitHandler = (event) => {
-          event.preventDefault();
-  
-          if(Password !== ConfirmPassword) {
-              return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
-          }
-  
-          
-          let body = {
-              email: Email,
-              password: Password,
-              name: Name
-          }
-  
-  
-  
-          dispatch(registerUser(body))
-          .then(response => {
-              if(response.payload.success) {
-                  props.history.push('/login')
-              } else {
-                  alert('Failed to sign up')
-              }
-          
-          })
-  
-      } 
-  
-  
-  
-
+export class Register extends Component {
+  render() {
     return (
-      <div onSubmit={onSubmitHandler}>
+      <div>
         <div className="d-flex align-items-center auth px-0">
           <div className="row w-100 mx-0">
             <div className="col-lg-4 mx-auto">
@@ -79,16 +21,16 @@ function Register(props) {
                     <button>중복확인</button>
                   </div>
                   <div className="form-group">
-                    <input type="password" className="form-control form-control-lg"  value={Password} onChange={onPasswordHandler} placeholder="비밀번호" />
+                    <input type="password" className="form-control form-control-lg" id="exampleInputPassword1" placeholder="비밀번호" />
                   </div>
                   <div className="form-group">
-                    <input type="password" className="form-control form-control-lg" value={ConfirmPassword} onChange={onConfirmPasswordHandler} placeholder="비밀번호 확인" />
+                    <input type="password" className="form-control form-control-lg" id="exampleInputPasswordConfirm1" placeholder="비밀번호 확인" />
                   </div>
                   <div className="form-group">
                     <input type="name" className="form-control form-control-lg" id="exampleInputName1" placeholder="이름" />
                   </div>
                   <div className="form-group">
-                    <input type="usernumber" className="form-control form-control-lg" id="exampleInputEmail1" placeholder="주민등록 번호" />
+                    <input type="usernumber" className="form-control form-control-lg" id="exampleInputEmail1" placeholder="사업자 번호" />
                   </div>
                   <div className="form-group">
                     <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" placeholder="이메일" />
@@ -114,7 +56,7 @@ function Register(props) {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >회원가입</button>
+                    <Link className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" to="/dashboard">SIGN UP</Link>
                   </div>
                   <div className="text-center mt-4 font-weight-light">
                     Already have an account? <Link to="/user-pages/login" className="text-primary">Login</Link>
@@ -127,6 +69,6 @@ function Register(props) {
       </div>
     )
   }
+}
 
-
-  export default withRouter(Register)
+export default Register
