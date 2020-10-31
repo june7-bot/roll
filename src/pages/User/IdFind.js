@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function User() {
+export default function IdFind() {
     return (
         <div>
-            6개
+            ifFind
         </div>
     )
 }

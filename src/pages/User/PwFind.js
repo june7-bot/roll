@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import { loginUser } from "../../_actions/user_actions";
+import { findPassword } from "../../_actions/user_actions";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 
 
-function LoginPage(props) {
+function PwFind(props) {
 
     const S = {
         Header: styled.div`
@@ -73,44 +73,51 @@ function LoginPage(props) {
 
 
   const dispatch = useDispatch();
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
-  const [formErrorMessage, setFormErrorMessage] = useState('')
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
+  const [formErrorMessage, setFormErrorMessage] = useState('');
+  const [number, setNumber] = useState(7777);
+  const [emailSave , setEmailSave] = useState('');
 
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe)
-  };
+ const handleNumberSubmit = (e) => {
 
-  const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
+    if (e.currentTarget.number.value == number){
+      
+        props.history.push(`/passwordChange/${ emailSave }`);
+             }else{
+                 alert("인증번호 일치하지 않습니다")
+             }
+ }
+
 
   return (
     <Formik
       initialValues={{
-        email: initialEmail,
-        password: '',
+        email: '',
+        number: ''
+    
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
           .email('Email is invalid')
-          .required('Email is required'),
-        password: Yup.string()
-          .min(6, 'Password must be at least 6 characters')
-          .required('Password is required'),
+          .required('Email is required')
+      
       })}
+
+
       onSubmit={(values, { setSubmitting }) => {
+         
         setTimeout(() => {
           let dataToSubmit = {
             email: values.email,
-            password: values.password
           };
 
-          dispatch(loginUser(dataToSubmit))
+          setEmailSave(values.email);
+
+          dispatch(findPassword(dataToSubmit))
             .then(response => {
               if (response.payload.success) {
-                window.localStorage.setItem('userId', response.payload.userId);  
-                sessionStorage.setItem("X-AUTH-TOKEN", response.payload.token)             
-                props.history.push("/");
+                setNumber(response.payload.number)
+             
               } else {
                 setFormErrorMessage('Check out your Account or Password again')
               }
@@ -136,11 +143,15 @@ function LoginPage(props) {
           handleBlur,
           handleSubmit,
           handleReset,
+      
         } = props;
+
         return (
           <S.Wrapper >
-                <S.Header >Log In</S.Header>
+                <S.Header >비밀번호 찾기</S.Header>
         <S.Content>
+
+
           
             <S.FormWrap onSubmit={handleSubmit}>
 
@@ -161,40 +172,46 @@ function LoginPage(props) {
                   <S.inputfeedback>{errors.email}</S.inputfeedback>
                 )}
               </S.FormWrap>
+                </S.FormWrap>
 
-              <S.FormWrap>
-              <S.Ilable for = "password">비밀번호 :</S.Ilable>
-                <S.Box
-                  id="password"
-                  placeholder="Enter your password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.password && touched.password ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.password && touched.password && (
-                  <S.inputfeedback>{errors.password}</S.inputfeedback>
-                )}
-              </S.FormWrap>
-
-              {formErrorMessage && (
-                <label ><p style={{ color: '#ff0000bf', fontSize: '0.7rem', border: '1px solid', padding: '1rem', borderRadius: '10px' }}>{formErrorMessage}</p></label>
-              )}
-              <a href='/idfind'  > 아이디 찾기 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href='/pwfind'  > 비밀번호 찾기 </a><br/>
-
+                <S.FormWrap onSubmit={handleSubmit}>
               <S.FormWrap>
                 <S.btnForm>
                   <S.btn onSubmit={handleSubmit}>
-                    Log in
+                    이메일 인증하기
                 </S.btn>
                 </S.btnForm>
               </S.FormWrap>
+
+
+
+
+              <S.FormWrap onSubmit ={handleNumberSubmit}>
+              <S.Ilable for = "number">인증번호 :</S.Ilable>
+                
+              
+                <S.Box
+                  id="number"
+                  name = "number"
+                  placeholder="인증번호 입력해주세요"
+                  type="text"
+                  value={values.number}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              
+
+               
+                <S.btnForm>
+                  <S.btn type = "submit">
+                    인증번호 인증하기
+                </S.btn>
+                </S.btnForm>
+              
             </S.FormWrap >
+            </S.FormWrap>
             </S.Content>
+
           </S.Wrapper>
         );
       }}
@@ -202,6 +219,6 @@ function LoginPage(props) {
   );    
 };
 
-export default withRouter(LoginPage);
+export default withRouter(PwFind);
 
 
