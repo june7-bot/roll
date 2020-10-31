@@ -190,7 +190,6 @@ export default function Header() {
       </S.Header>
     </S.Wrapper>
   );
-
 };
 };
 

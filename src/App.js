@@ -55,8 +55,6 @@ function App() {
             <Route exact path="/admin/transaction" component = { Auth( Transaction , true, true) } />
             <Route exact path="/admin/profile" component = { Auth( Profile , true, true) } />
             <Route exact path="/admin/blockchain" component = { Auth( BlockChain , true, true) } />
-         
-            
             
        </Switch>
        </div>
