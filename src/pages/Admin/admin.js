@@ -24,7 +24,7 @@ export default function Admin() {
 
          <a href={"/admin/transaction"}  >거래 정보 조회 </a><br/><br/>
          <a href={"/admin/profile"}  > 회원 정보 조회 </a><br/>
-        
+         <a href={"/admin/blockchain"}  > 블록 체인 조회 </a><br/>
         
         </div>
     )

@@ -26,7 +26,7 @@ import PwChange from './pages/User/PwChange';
 import Transaction from './pages/Admin/Transaction';
 import Profile from './pages/Admin/Profile';
 import CurrentStatus from './pages/User/CurrentStatus';
-
+import BlockChain from './blockchain/blockchain';
 
 
 function App() {
@@ -54,6 +54,7 @@ function App() {
             <Route exact path="/passwordChange/:userId" component = { Auth( PwChange , false, false) } />
             <Route exact path="/admin/transaction" component = { Auth( Transaction , true, true) } />
             <Route exact path="/admin/profile" component = { Auth( Profile , true, true) } />
+            <Route exact path="/admin/blockchain" component = { Auth( BlockChain , true, true) } />
          
             
             
