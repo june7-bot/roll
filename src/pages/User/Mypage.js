@@ -5,7 +5,6 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 export default function MyPage() {
-    ㄹㄹ
   
     const [id, setId] = useState('');
 
