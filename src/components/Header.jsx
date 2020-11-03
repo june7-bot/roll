@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
-
+import '../index.css';
 import { useSelector } from "react-redux";
 import imgA from '../assets/logo.PNG';
 import { Link } from 'react-router-dom'
@@ -109,7 +109,7 @@ export default function Header() {
         </a>
         </div>
           </S.Logo>
-        <S.Navigation>
+        <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
             </S.NavigationItem>
@@ -150,7 +150,7 @@ export default function Header() {
         </a>
         </div>
       </S.Logo>
-      <S.Navigation>
+      <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
           <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                홈으로
           </S.NavigationItem>
@@ -164,12 +164,12 @@ export default function Header() {
           </S.NavigationItem>
       </S.Navigation>
       <S.ButtonWrapper>
-        <Button as = "a" href="/mypage" fill="solid" type="button">
+        <Button as = "a" href="/mypage" fill="" type="button">
          마이페이지
         </Button>
       </S.ButtonWrapper>
       <S.ButtonWrapper>
-        <Button onClick={ logoutHandler } fill="solid" type="button">
+        <Button onClick={ logoutHandler } fill="" type="button">
          로그아웃
         </Button>
       </S.ButtonWrapper>
@@ -194,7 +194,7 @@ export default function Header() {
         </a>
         </div>
         </S.Logo>
-        <S.Navigation>
+        <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
             </S.NavigationItem>

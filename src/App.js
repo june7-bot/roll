@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './styles';
 import { Home } from './pages';
@@ -22,7 +23,6 @@ import DogList from './pages/Dog/DogList';
 import DogInfo from './pages/Dog/DogInfo';
 import MyPage from './pages/User/MyPage';
 import MyPageInfo from './pages/User/MyPageInfo';
-
 import MyAdopt from './pages/User/MyAdopt';
 import MyParcel from './pages/User/MyParcel';
 import IdFind from './pages/User/IdFind';

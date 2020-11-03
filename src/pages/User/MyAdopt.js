@@ -1,6 +1,8 @@
 import React, {useEffect, useState  } from 'react'
 import { useDispatch } from "react-redux";
 import { myAdopt } from '../../_actions/user_actions'
+import { Card,Button,CardGroup } from 'react-bootstrap';
+import '../Dog/dog.css';
 
 export default function MyAdopt(props) {
     const dispatch = useDispatch();
@@ -34,28 +36,46 @@ export default function MyAdopt(props) {
        []);
   
     return (
-  
-     <div>
-         <ul>
-             입양 전 강아지들
+      <div class="container">
+             <h1 style={{fontFamily: "'yg-jalnan'"}}>입양 전 강아지들</h1>
+             <CardGroup class="card-columns"  style={{fontFamily: "'Cafe24Oneprettynight"}}>
              { dogs.map ( dog =>
-                <li key = { dog.id}>
-                  강아지 이름 : { dog.name }<br/>
-                  강아지 가격 :    { dog.price } <br/>
-                     <img src={ `http://127.0.0.1:8888/${ dog.photo }` } width = {250}  />
-                     <br/><br/><br/>
-                </li>
+              
+                <Card key = {dog.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ dog.photo }` } width = {250} />
+                <Card.Body>
+                  <Card.Title>{ dog.name }</Card.Title>
+                  <Card.Text>
+                  이름:{ dog.name }<br/>
+                  분양가격:{dog.price}원
+                  </Card.Text>
+                  
+                  
+                </Card.Body>
+              </Card>
+            
                 )}
-<br/><br/><br/><br/><br/><br/>
-            입양 완료 강아지들
+                  </CardGroup>
+
+            <h1 style={{fontFamily: "'yg-jalnan'"}}>입양 완료 강아지들</h1>
+            <CardGroup class="card-columns"  style={{fontFamily: "'Cafe24Oneprettynight"}}>
             { dogZero.map( dog =>
-                <li key = {dog.id}>
-                    강아지 이름 : { dog.name }<br/>
-                    강아지 가격 : { dog.price } <br/>
-                     <img src={ `http://127.0.0.1:8888/${ dog.photo }` } width = {250}  />
-                </li>
-                )}      
-         </ul>
+                
+                <Card key = {dog.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ dog.photo }` } width = {250} />
+                <Card.Body>
+                  <Card.Title>{ dog.name }</Card.Title>
+                  <Card.Text>
+                  이름:{ dog.name }<br/>
+                  분양가격:{dog.price}원
+                  </Card.Text>
+                  
+                  
+                </Card.Body>
+              </Card>
+              
+            )}
+         </CardGroup>
      </div>
     )
 }

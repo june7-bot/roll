@@ -57,7 +57,7 @@ let data = {
                
               <li key = {list.id}>
               { list.name }, {list.price}
-              <img src={ `http://127.0.0.1:8888/${ list.photo }` } width = {250}  />
+              <img src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }`  } width = {250}  />
               </li>
             )}
 분양거래 :
@@ -65,7 +65,7 @@ let data = {
                
                <li key = {list.id}>
                { list.name }, {list.price}
-               <img src={ `http://127.0.0.1:8888/${ list.photo }` } width = {250}  />
+               <img src={  `http://127.0.0.1:8080/upload/dogs/${ list.photo }`  } width = {250}  />
                </li>
              )}
             </ul>
