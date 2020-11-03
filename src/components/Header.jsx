@@ -64,11 +64,6 @@ const S = {
   `,
 };
 
-const NAVIGATION_ITEMS = [<Link to='/'>홈으로</Link>,
-                          <Link to='/about'>도그블록이란</Link>,
-                          <Link to='/board'>강아지들</Link>,
-                          <Link to='/'>기타</Link>,
-                          ];
 
 export default function Header() {
 
@@ -144,7 +139,17 @@ export default function Header() {
     return(
     <S.Wrapper isScroll={isScroll}>
     <S.Header isScroll={isScroll}>
-      <S.Logo isScroll={isScroll}>도그블록</S.Logo>
+      <S.Logo isScroll={isScroll}>
+      <div>
+          <a href='/'>
+        <img
+         src={ imgA }
+         width='120'
+        height='73'
+        alt='testA' />
+        </a>
+        </div>
+      </S.Logo>
       <S.Navigation>
           <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                홈으로
