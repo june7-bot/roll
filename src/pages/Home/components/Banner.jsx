@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useScrollFadeIn } from '../../../hooks';
 
-var direction =require('../../../_maps/map.html');
+//var direction =require('../../../_maps/map.html');
 
 const S = {
   Wrapper: styled.section`
@@ -45,9 +45,9 @@ const Banner = () => {
       
     //   </div>
      
-    
+    <div>sds</div>
     // </S.Wrapper>
-    <div dangerouslySetInnerHTML={ {__html: direction} } />
+    // <div dangerouslySetInnerHTML={ {__html: direction} } />
   );
 };
 

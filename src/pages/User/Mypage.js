@@ -26,7 +26,7 @@ export default function MyPage() {
          {  id }님 안녕하세요<br/>
 
          <a href={`/mypage/info/${ id }`}  > 회원정보 수정 </a><br/>
-         {/* <a href={`/mypage/currentstatus/${ id }`}  > 진행중인 거래 </a><br/> */}
+
          <a href={`/mypage/myadopt/${ id }`}  > 입양 보낸 강아지들 </a><br/>
          <a href={`/mypage/myparcel/${ id }`}  > 입양 받은 강아지들 </a><br/>
         </div>
