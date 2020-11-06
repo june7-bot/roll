@@ -9,7 +9,7 @@ export default function CurrentStatus(props) {
     const id = props.match.params.userId;
 
     const dispatch = useDispatch();
-    const [buyer, setBuyer] = useState([]);
+    const [buyer, setBuyer] = useState([]); 
     const [seller, setSeller] = useState([]);
 
     useEffect(() => {

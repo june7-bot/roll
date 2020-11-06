@@ -7,7 +7,7 @@ const S = {
     border: 0;
     outline: none;
     border-radius: 0.5rem;
-    box-sizing: border-box;
+    box-sizing: border-box;   
     cursor: pointer;
     ${props => props.theme.typography.button};
     background-color: ${({ theme, fill }) =>

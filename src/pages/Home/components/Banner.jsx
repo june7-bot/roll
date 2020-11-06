@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '../../../components';
 import { useScrollFadeIn } from '../../../hooks';
+
+var direction =require('../../../_maps/map.html');
 
 const S = {
   Wrapper: styled.section`
@@ -34,17 +35,19 @@ const Banner = () => {
   };
 
   return (
-    <S.Wrapper>
-      <S.Label {...animatedItem[0]}>도그 블록</S.Label>
-      <S.Title {...animatedItem[1]}>
-        가족이 되어주세요
-      </S.Title>
-      <div {...animatedItem[2]}>
-        <Button fill="solid" type="button">
-          분양 하기
-        </Button>
-      </div>
-    </S.Wrapper>
+    // <S.Wrapper>
+    //   <S.Label {...animatedItem[0]}>도그 블록</S.Label>
+    //   <S.Title {...animatedItem[1]}>
+    //     찾아오시는 길
+    //   </S.Title>
+    //   <div {...animatedItem[2]}>
+    //   {/* <img src = {"http://kko.to/gnZiXs3YH"} width = {400} /> */}
+      
+    //   </div>
+     
+    
+    // </S.Wrapper>
+    <div dangerouslySetInnerHTML={ {__html: direction} } />
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useScrollCount } from '../../../hooks';
+import { useScrollFadeIn } from '../../../hooks';
 
 const S = {
   Background: styled.section`
@@ -49,34 +50,46 @@ const S = {
 
 const FIGURE_ITEMS = [
   {
-    title: 'Total Projects',
-    number: 630,
-    unit: '+',
-    description: 'Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus.',
+    title: '도그블록이 만든 가족 수 ',
+    number: 63,
+    unit: '',
+   
   },
   {
-    title: 'Partners',
+    title: '가족을 기다리는 강아지들',
     number: 124,
     unit: '',
-    description:
-      'Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus.',
+
   },
   {
-    title: 'Business Success',
+    title: '도그블록 이용 만족도',
     number: 92,
     unit: '%',
-    description:
-      'Porttitor rhoncus dolor purus non enim praesent elementum facilisis.',
+
   },
 ];
 
 const Figure = () => {
+  const countItem = {
+    0: useScrollCount(630),
+    1: useScrollCount(124),
+    2: useScrollCount(92),
+  };
 
   return (
     <S.Background>
       <S.Wrapper>
-              <S.Description>분양된 강아지들</S.Description>
-      </S.Wrapper> 
+        <S.List>
+          {FIGURE_ITEMS.map((item, index) => (
+            <S.ListItem key={item.title}>
+              <S.Number {...countItem[index]}>0</S.Number>
+              <S.Unit>{item.unit}</S.Unit>
+              <S.Title>{item.title}</S.Title>
+              <S.Description>{item.description}</S.Description>
+            </S.ListItem>
+          ))}
+        </S.List>
+      </S.Wrapper>
     </S.Background>
   );
 };

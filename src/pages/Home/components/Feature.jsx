@@ -61,9 +61,9 @@ const S = {
 };
 
 const FEAURE_ITEMS = [
-  '강아지 유기 방지',
-  '@#',
-  '~!',
+  '블록체인은 거래 기록을 신뢰할 수 있는 분산장부입니다.',
+  '블록체인 이용 강아지 및 구매자 정보 저장  ',
+  '',
 ];
 
 const Feature = () => {
@@ -86,7 +86,7 @@ const Feature = () => {
             </S.ListItem>
           ))}
         </S.List>
-        <S.TextButton>더 보기</S.TextButton>
+
       </S.TextWrapper>
       <S.Image />
     </S.Wrapper>

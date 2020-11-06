@@ -33,7 +33,7 @@ useEffect(() => {
              
               <li key = {item.id}>
               { item.name }, {item.price}
-              <img src={ `http://127.0.0.1:8888/${ item.photo }` } width = {250}  />
+              <img src={ `http://127.0.0.1:8888/photo/${ item.photo }` } width = {250}  />
               <a href={`/doginfo/${item.id}`}  > 상세보기 </a>
             
             </li>

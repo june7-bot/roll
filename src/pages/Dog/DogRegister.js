@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Formik } from 'formik'; 
 import { registerDog } from "../../_actions/dog_action";
 import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios'
-import { USER_SERVER } from '../../pages/Config';
+
 
 const S = {
     Header: styled.div`
@@ -73,10 +72,11 @@ export default function DogRegister(props) {
     const dispatch = useDispatch();
     const id = useSelector(state => state.user.userData)
     const [file, setFile] = useState('');
+    const [nose, setNose] = useState('');
+    const [birth, setBirth] = useState('');
 
     return (
  
-
         <Formik
           initialValues={{
             name: '',
@@ -95,17 +95,20 @@ export default function DogRegister(props) {
           onSubmit={(values, { setSubmitting }) => {
         
             let formData =  new FormData();
-            formData.append('file', file);
+           
             formData.append('name', values.name);
             formData.append('price', values.price);
-            formData.append('owner', id.userId)
-         
+            formData.append('owner', id.userId);
+            formData.append('picture', file);
+            formData.append('birth', birth);
+            formData.append('nose', nose);
+
             setTimeout(() => {
 
               dispatch(registerDog(formData)).then(response => {
           
                    if (response.payload) {
-
+                      
                    props.history.push("/doglist");
                  } else {
                    alert('에러발생');
@@ -161,17 +164,42 @@ export default function DogRegister(props) {
                         /></S.FormWrap>
 
                       <S.FormWrap>
-                      <S.Ilable for = "nose">코지문 :</S.Ilable>
+                      <S.Ilable for = "picture"> 강아지 사진 :</S.Ilable>
                         <S.Box
-                          id="file"
-                          placeholder="Enter your nose"
+                          id="picture"
+                          placeholder="강아지 사진 넣어주세요"
                           type="file"
                           accept = ".jpg"
                           onChange={(e) => setFile(e.target.files[0]) }
                           onBlur={handleBlur}
                         />
+                      </S.FormWrap>
 
-                       
+                      
+                      <S.FormWrap>
+                      <S.Ilable for = "birth">출생증명서 :</S.Ilable>
+                        <S.Box
+                          id="birth"
+                          placeholder="출생증명서 넣어주세요"
+                          type="file"
+                          accept = ".jpg"
+                          onChange={(e) => setBirth(e.target.files[0]) }
+                          onBlur={handleBlur}
+                        />
+                      </S.FormWrap>
+
+
+                      
+                      <S.FormWrap>
+                      <S.Ilable for = "nose">코지문 :</S.Ilable>
+                        <S.Box
+                          id="nose"
+                          placeholder="Enter your nose"
+                          type="file"
+                          accept = ".jpg"
+                          onChange={(e) => setNose(e.target.files[0]) }
+                          onBlur={handleBlur}
+                        />
                       </S.FormWrap>
                    
                       <S.btnForm>

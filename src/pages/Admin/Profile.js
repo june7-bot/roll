@@ -5,7 +5,7 @@ import {seeAllUser } from '../../_actions/user_actions'
 export default function Profile() {
     const dispatch = useDispatch();
  
-    const [list, setList] = useState([]);
+    const [list , setList] = useState([]);
    
   
       useEffect(() => {
@@ -20,11 +20,8 @@ export default function Profile() {
           }) 
       },
        []);
-  
     return (
-
      <div>
-
          <ul>
              { list.map ( list  =>
                 <li key = { list.id}>

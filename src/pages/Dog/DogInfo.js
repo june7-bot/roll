@@ -41,9 +41,6 @@ export default function DogInfo(props) {
     dispatch(orderDog(submitData)).then(response => {
       if (response.payload.success) {
 
-
-
-
         props.history.push('/mypage');
                      }
   else{

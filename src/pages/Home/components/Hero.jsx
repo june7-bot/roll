@@ -38,10 +38,10 @@ const Hero = () => {
     <S.Background>
       <S.Wrapper>
         <S.Title>
-        가족이 되어주세요
+      
         </S.Title>
         <S.Description>
-         !@#@#@$#$#$
+  
         </S.Description>
       </S.Wrapper>
     </S.Background>

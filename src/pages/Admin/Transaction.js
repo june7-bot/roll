@@ -28,11 +28,12 @@ export default function Transaction() {
          <ul>
              { list.map ( list  =>
                 <li key = { list.id}>
-                  거래번호 : {list.id} <br/><br/>
-                  판매자 email : { list.seller }<br/><br/>
-                  구매자 email :    { list.buyer } <br/>
-                  강아지 이름 :    { list.dogId } <br/> 
-                  강아지 가격 :    { list.price } <br/>
+                  거래번호 : {list.id}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  판매자 email : { list.seller }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  구매자 email : { list.buyer }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  강아지 이름 : { list.dogId }  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  강아지 가격 : { list.price } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href={`/admin/blockchain/${list.id}`} > 블록체인에 저장하기</a>
                      <br/><br/><br/>
                 </li>
                 )}

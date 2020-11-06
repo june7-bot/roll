@@ -16,3 +16,5 @@ export const CHANGEPW_USER = 'changePw_user';
 export const ADMINTRANSACTION_USER = 'adminTransaction_user';
 export const SEEALLUSER_USER = 'seeAll_user';
 export const PROCEEDLIST_USER = 'proceedList_user';
+export const BCREGISTER_USER = 'bcRegister_user';
+export const BCLIST_USER = 'bcList_user';

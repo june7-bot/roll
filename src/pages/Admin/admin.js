@@ -22,9 +22,9 @@ export default function Admin() {
         <div>
          관리자페이지<br/><br/>
 
-         <a href={"/admin/transaction"}  >거래 정보 조회 </a><br/><br/>
-         <a href={"/admin/profile"}  > 회원 정보 조회 </a><br/>
-         <a href={"/admin/blockchain"}  > 블록 체인 조회 </a><br/>
+         <a href={"/admin/transaction"}> 거래 정보 조회 </a><br/><br/>
+         <a href={"/admin/profile"}> 회원 정보 조회 </a><br/>
+         <a href={"/admin/blockchainlist"}> 블록체인 정보들 조회 </a><br/>
         
         </div>
     )
