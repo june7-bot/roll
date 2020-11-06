@@ -5,6 +5,7 @@ import { registerDog } from "../../_actions/dog_action";
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { USER_SERVER } from '../../pages/Config';
+import './dog.css';
 
 const S = {
     Header: styled.div`
@@ -129,11 +130,11 @@ export default function DogRegister(props) {
             } = props;
             return (
         <S.Wrapper>
-            <S.Header>강아지 등록</S.Header>
+            <S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>강아지 등록</S.Header>
                   <S.Content>
-
+                      <div class="container">
                       <S.FormWrap>
-                      <S.Ilable for = "name">이름 :</S.Ilable>
+                      <S.Ilable for = "name" style={{fontFamily: "'yg-jalnan'"}}>이름 :</S.Ilable>
                         <S.Box
                           id="name"
                           name = "name"
@@ -148,7 +149,7 @@ export default function DogRegister(props) {
                       </S.FormWrap>
         
                       <S.FormWrap>
-                      <S.Ilable for = "price">가격 :</S.Ilable>
+                      <S.Ilable for = "price" style={{fontFamily: "'yg-jalnan'"}}>가격 :</S.Ilable>
                         <S.Box
                           id="price"
                           name = "price"
@@ -161,7 +162,7 @@ export default function DogRegister(props) {
                         /></S.FormWrap>
 
                       <S.FormWrap>
-                      <S.Ilable for = "nose">코지문 :</S.Ilable>
+                      <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문 :</S.Ilable>
                         <S.Box
                           id="file"
                           placeholder="Enter your nose"
@@ -175,15 +176,20 @@ export default function DogRegister(props) {
                       </S.FormWrap>
                    
                       <S.btnForm>
-                          <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                             Submit
+                          <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-gradient-danger btn-rounded btn-fw"
+                          style={{fontFamily: "'Cafe24Oneprettynight"}}>
+                             분양등록
                           </S.btn>
                       </S.btnForm>
+                      </div>
                   </S.Content>
                   </S.Wrapper>
+                 
                 );
               }}
+              
                </Formik>
+                
     );
             };
            

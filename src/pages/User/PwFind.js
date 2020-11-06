@@ -148,7 +148,7 @@ function PwFind(props) {
 
         return (
           <S.Wrapper >
-                <S.Header >비밀번호 찾기</S.Header>
+                <S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>비밀번호 찾기</S.Header>
         <S.Content>
 
 
@@ -156,7 +156,7 @@ function PwFind(props) {
             <S.FormWrap onSubmit={handleSubmit}>
 
               <S.FormWrap>
-              <S.Ilable for = "email">이메일 :</S.Ilable>
+              <S.Ilable for = "email" style={{fontFamily: "'yg-jalnan'"}}>이메일 :</S.Ilable>
                 <S.Box
                   id="email"
                   placeholder="Enter your email"
@@ -177,8 +177,8 @@ function PwFind(props) {
                 <S.FormWrap onSubmit={handleSubmit}>
               <S.FormWrap>
                 <S.btnForm>
-                  <S.btn onSubmit={handleSubmit}>
-                    이메일 인증하기
+                  <S.btn onSubmit={handleSubmit} style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-gradient-danger btn-rounded btn-fw">
+                    인증번호 전송
                 </S.btn>
                 </S.btnForm>
               </S.FormWrap>
@@ -187,7 +187,7 @@ function PwFind(props) {
 
 
               <S.FormWrap onSubmit ={handleNumberSubmit}>
-              <S.Ilable for = "number">인증번호 :</S.Ilable>
+              <S.Ilable for = "number" style={{fontFamily: "'yg-jalnan'"}}>인증번호 :</S.Ilable>
                 
               
                 <S.Box
@@ -203,8 +203,8 @@ function PwFind(props) {
 
                
                 <S.btnForm>
-                  <S.btn type = "submit">
-                    인증번호 인증하기
+                  <S.btn type = "submit" style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-gradient-danger btn-rounded btn-fw">
+                    인증번호 인증
                 </S.btn>
                 </S.btnForm>
               

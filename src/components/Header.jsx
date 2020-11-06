@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import '../index.css';
 import { useSelector } from "react-redux";
-import imgA from '../assets/logo.PNG';
+import imgA from '../assets/login.PNG';
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap';
 import axios from 'axios';
@@ -112,26 +112,24 @@ export default function Header() {
         <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           
             <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
                  강아지 등록
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
                  강아지들
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </S.Navigation>
-        <S.ButtonWrapper>
-          <Button as = "a" href="/admin" fill="solid" type="button">
+       
+          <Button as = "a" href="/admin" fill="solid" type="button" className="btn btn-gradient-danger btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
            관리자페이지
           </Button>
-        </S.ButtonWrapper>
-        <S.ButtonWrapper>
-          <Button onClick={ logoutHandler } fill="solid" type="button">
+          <Button onClick={ logoutHandler } fill="solid" type="button" className="btn btn-gradient-secondary btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
            로그아웃
           </Button>
-        </S.ButtonWrapper>
+        
       </S.Header>
     </S.Wrapper>
   )}
@@ -153,26 +151,26 @@ export default function Header() {
       <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
           <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                홈으로
-          </S.NavigationItem>
+          </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
           <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
                강아지 등록
-          </S.NavigationItem>
+          </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
                강아지들
-          </S.NavigationItem>
+          </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </S.Navigation>
-      <S.ButtonWrapper>
-        <Button as = "a" href="/mypage" fill="" type="button">
+      
+     
+        <Button as = "a" href="/mypage" fill="" type="button" className="btn btn-gradient-danger btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
          마이페이지
-        </Button>
-      </S.ButtonWrapper>
-      <S.ButtonWrapper>
-        <Button onClick={ logoutHandler } fill="" type="button">
+        </Button><br/>
+        <Button onClick={ logoutHandler } fill="" type="button" className="btn btn-gradient-secondary btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
          로그아웃
         </Button>
-      </S.ButtonWrapper>
+      
+      
     </S.Header>
   </S.Wrapper>
 )
@@ -197,22 +195,22 @@ export default function Header() {
         <S.Navigation style={{fontFamily: "Cafe24Oneprettynight"}}>
             <S.NavigationItem href = {'/'}  isScroll={isScroll}>
                  홈으로
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           
             <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
                  강아지 등록
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
                  강아지들
-            </S.NavigationItem>
+            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </S.Navigation>
     
         
-          <Button color="cyan" as = "a" href="/registerc" type="button" style={{ textDecoration: 'none' }}>
+          <Button  as = "a" href="/register" type="button" style={{ textDecoration: 'none' }} className="btn btn-gradient-danger btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
            회원가입
           </Button>
-          <Button color="" as = "a" href = "/login" type="button" style={{ textDecoration: 'none' }}>
+          <Button  as = "a" href = "/login" type="button" style={{ textDecoration: 'none' }} className="btn btn-gradient-danger btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
            로그인
           </Button>
         

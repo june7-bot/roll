@@ -23,19 +23,36 @@ export default function Profile() {
   
     return (
 
-     <div>
-
-         <ul>
-             { list.map ( list  =>
-                <li key = { list.id}>
-                  회원ID : {list.id} &nbsp; &nbsp; &nbsp; &nbsp;
-                  거래횟수 :{list.transactionNumber} &nbsp; &nbsp; &nbsp; &nbsp;
-                  회원등급 : { list.role }
-                     <br/><br/><br/><br/>
-                </li>
-                )}
-                </ul>
+<div className="row">
+          <div className="col-lg-6 grid-margin stretch-card">
+          
+            <div className="card" >
+              <div className="card-body">
+              <div className="table table-striped" >
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>회원ID</th>
+                      <th>거래횟수</th>
+                      <th>회원등급</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  { list.map ( list  =>
+                    <tr key = { list.id}>
+                      <td>{list.id}</td>
+                      <td>{ list.transactionNumber }</td>
+                      <td>{ list.role }</td>
+                    </tr>
+                  )}
+                  </tbody>
+                </table>
+              </div>
+             </div>
             </div>
+           
+          </div>
+      </div>  
             )
         }
            

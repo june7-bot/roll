@@ -7,10 +7,7 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Admin from './pages/Admin/Admin';
 import Auth from './hoc/auth';
-import About from './pages/About/About';
 import Board from './pages/Board/Board';
-import Registercho from './pages/Register/Registercho';
-import Register1 from './pages/Register/Register1';
 import BoardForm from './pages/Board/BoardForm';
 import {
   BrowserRouter as Router,
@@ -44,12 +41,9 @@ function App() {
       <Switch>
             <Route exact path="/" component = {Auth (Home, null, false) }/>
             <Route exact path="/register" component = { Auth(Register, false, false) } />
-            <Route exact path="/register1" component = { Auth(Register1, false, false) } />
-            <Route exact path="/registerc" component = { Auth(Registercho, false, false) } />
             <Route exact path="/login" component = { Auth( Login, false, false) } />
             <Route exact path="/dogregister" component = { Auth( DogRegister , true, false) } />
             <Route exact path="/admin" component = { Auth( Admin , true, true) } />
-            <Route exact path="/about" component = {Auth (About, null, false) }/>
             <Route exact path="/board" component = {Auth (Board, null, false) }/>
             <Route exact path="/boardform" component = {Auth (BoardForm, null, false) }/>
             <Route exact path="/doglist" component = { Auth( DogList , true, false) } />

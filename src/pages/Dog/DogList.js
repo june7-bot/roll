@@ -38,13 +38,13 @@ useEffect(() => {
 
             <Card key = {item.id} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ item.photo }` } width = {250} />
-              <Card.Body>
+              <Card.Body style={{"align-items": "right"}}>
                 <Card.Title>{ item.name }</Card.Title>
                 <Card.Text>
                 이름:{ item.name }<br/>
                 분양가격:{item.price}원
-                </Card.Text>
-                <a href={`/doginfo/${item.id}`}><Button  className="btn btn info" >상세보기</Button></a>
+                </Card.Text><br/>
+                <a href={`/doginfo/${item.id}`} ><Button  className="btn btn info">상 세 보 기</Button></a>
                 
               </Card.Body>
             </Card>

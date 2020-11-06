@@ -155,15 +155,13 @@ function Register(props) {
         return (
 <S.Wrapper>
 
-<S.Content>
-      <img src={require("../../assets/logo1.PNG")} alt="logo" />
-     </S.Content>
+
   
-<S.Header>회원가입</S.Header>
+<S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>회원가입</S.Header>
           <S.Content>
 
               <S.FormWrap>
-              <S.Ilable for = "email">이메일 입력 :</S.Ilable>
+              <S.Ilable for = "email" style={{fontFamily: "'yg-jalnan'"}}>이메일 입력 :</S.Ilable>
                 <S.Box
                   id="email"
                   placeholder="Enter your Email"
@@ -181,7 +179,7 @@ function Register(props) {
               </S.FormWrap>
 
               <S.FormWrap>
-              <S.Ilable for = "password">비밀번호 입력 :</S.Ilable>
+              <S.Ilable for = "password" style={{fontFamily: "'yg-jalnan'"}}>비밀번호 입력 :</S.Ilable>
                 <S.Box
                   id="password"
                   placeholder="Enter your password"
@@ -199,7 +197,7 @@ function Register(props) {
               </S.FormWrap>
 
               <S.FormWrap>
-              <S.Ilable for = "confirmPassword">비밀번호 재입력 :</S.Ilable>
+              <S.Ilable for = "confirmPassword" style={{fontFamily: "'yg-jalnan'"}}>비밀번호 재입력 :</S.Ilable>
                 <S.Box
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"
@@ -221,9 +219,8 @@ function Register(props) {
      <S.ulable for = "acceptTerms">개인정보 수집 및 이용 동의(필수)</S.ulable>
     <S.Box2  type="checkbox" name="acceptTerms" 
             onClick = { handleChange }
-     className={
-      errors.acceptTerms && touched.acceptTerms ? 'text-input error' : 'text-input'
-    }
+     className={errors.acceptTerms && touched.acceptTerms ? 'text-input error' : 'text-input'}
+    
     /> 
     {errors.acceptTerms && touched.acceptTerms && (
       <S.inputfeedback>{errors.acceptTerms}</S.inputfeedback>
@@ -235,15 +232,15 @@ function Register(props) {
 
       <S.textarea>
   여러분을 환영합니다.
-네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 도그블럭 서비스의 이용과 관련하여 도그블럭 서비스를 제공하는 도그블럭 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
  </S.textarea>
 </S.FormWrap>
 
               <S.btnForm>
-                <S.btn onClick={handleSubmit} type="submit" disabled={isSubmitting}>
-                  Submit
+                <S.btn onClick={handleSubmit} type="submit" disabled={isSubmitting} style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-gradient-danger btn-rounded btn-fw">
+                  가입
                 </S.btn>
               </S.btnForm>
           </S.Content>

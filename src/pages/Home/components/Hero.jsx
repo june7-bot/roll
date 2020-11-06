@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { heroBackground } from '../../../assets';
 import { Button } from '../../../components';
 
+
 const S = {
   Background: styled.section`
     position: absolute;
@@ -19,9 +20,9 @@ const S = {
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
   `,
-  Title: styled.h1`
+  Title: styled.h4`
     ${props => props.theme.typography.title};
     color: #fff;
     margin-bottom: 0.5rem;
@@ -35,13 +36,14 @@ const S = {
 
 const Hero = () => {
   return (
+    
     <S.Background>
       <S.Wrapper>
-        <S.Title>
+        <S.Title style={{fontFamily: "'MaplestoryOTFBold'"}}>
         가족이 되어주세요
         </S.Title>
         <S.Description>
-         !@#@#@$#$#$
+         
         </S.Description>
       </S.Wrapper>
     </S.Background>

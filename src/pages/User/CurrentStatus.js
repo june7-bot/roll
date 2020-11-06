@@ -1,6 +1,8 @@
 import React,  { useEffect, useState } from 'react'
 import { proceedList } from "../../_actions/user_actions";
 import { useDispatch , useSelector } from "react-redux";
+import { Card,Button,CardGroup } from 'react-bootstrap';
+import '../Dog/dog.css';
 
 export default function CurrentStatus(props) {
   
@@ -48,27 +50,46 @@ let data = {
 //     })}
 
     return (
-        <div>         
-   <ul>
-            { id }님 거래
-            <br/><br/>
-            입양 거래 : <br/>
-            { seller.map ( list => 
-               
-              <li key = {list.id}>
-              { list.name }, {list.price}
-              <img src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }`  } width = {250}  />
-              </li>
-            )}
-분양거래 :
-{ buyer.map ( list => 
-               
-               <li key = {list.id}>
-               { list.name }, {list.price}
-               <img src={  `http://127.0.0.1:8080/upload/dogs/${ list.photo }`  } width = {250}  />
-               </li>
-             )}
-            </ul>
-     </div>
+      <div class="container">
+      <h1 style={{fontFamily: "'yg-jalnan'"}}>{ id }님 거래</h1>
+      <CardGroup class="card-columns"  style={{fontFamily: "'Cafe24Oneprettynight"}}>
+      { seller.map ( list => 
+       
+         <Card key = {list.id} style={{ width: '18rem' }}>
+         <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }` } width = {250} />
+         <Card.Body>
+           <Card.Title>{ list.name }</Card.Title>
+           <Card.Text>
+           이름:{ list.name }<br/>
+           분양가격:{list.price}원
+           </Card.Text>
+           
+           
+         </Card.Body>
+       </Card>
+     
+         )}
+           </CardGroup>
+
+     <h1 style={{fontFamily: "'yg-jalnan'"}}>분양거래 :</h1>
+     <CardGroup class="card-columns"  style={{fontFamily: "'Cafe24Oneprettynight"}}>
+     { buyer.map ( list => 
+         
+         <Card key = {list.id} style={{ width: '18rem' }}>
+         <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }` } width = {250} />
+         <Card.Body>
+           <Card.Title>{ list.name }</Card.Title>
+           <Card.Text>
+           이름:{ list.name }<br/>
+           분양가격:{list.price}원
+           </Card.Text>
+           
+           
+         </Card.Body>
+       </Card>
+       
+     )}
+  </CardGroup>
+</div>
     )
             }
