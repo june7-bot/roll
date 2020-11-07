@@ -77,7 +77,6 @@ useEffect(() => {
    }
   dispatch(blockRegister(dataToSubmit)).then(response => {
     if (response.payload.success) {
-
           setNose( response.payload.dogNose );
           setBuyer( response.payload.buyerInfo ); 
           setPhoto( response.payload.birthFile );  
