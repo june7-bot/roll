@@ -35,7 +35,7 @@ export default function Admin() {
             <div className="col-lg-4 mx-auto">
               <div className="auth-form-light text-left py-5 px-4 px-sm-5">
                 <div className="brand-logo">
-                    <img src={require("../../assets/login.PNG")} alt="logo" />
+                    <img src={require("../../assets/login.png")} alt="logo" />
                 </div>
                 <div style={{fontSize: 30, fontFamily: 'ImcreSoojin', textAlign: "center"}}>
                     <h4 className="card-title">관리자페이지</h4><br/><br/>
