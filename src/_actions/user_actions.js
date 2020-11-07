@@ -13,7 +13,8 @@ import {
     CHANGEPW_USER,
     ADMINTRANSACTION_USER,
     SEEALLUSER_USER,
-    PROCEEDLIST_USER
+    PROCEEDLIST_USER,
+    BCREGISTER_USER,
 } from './types';
 
 import { USER_SERVER } from '../pages/Config';
@@ -177,6 +178,17 @@ export function proceedList(dataToSubmit){
     
     return {
         type: PROCEEDLIST_USER,
+        payload: request
+    }
+}
+
+
+export function blockRegister(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/admin/blockchain`, dataToSubmit)
+        .then(response => response.data);
+    
+    return {
+        type: BCREGISTER_USER ,
         payload: request
     }
 }

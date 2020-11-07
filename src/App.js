@@ -18,7 +18,7 @@ import { Header } from './components';
 import DogRegister from './pages/Dog/DogRegister';
 import DogList from './pages/Dog/DogList';
 import DogInfo from './pages/Dog/DogInfo';
-import MyPage from './pages/User/MyPage';
+import MyPage from './pages/User/Mypage';
 import MyPageInfo from './pages/User/MyPageInfo';
 import MyAdopt from './pages/User/MyAdopt';
 import MyParcel from './pages/User/MyParcel';
@@ -28,17 +28,18 @@ import PwChange from './pages/User/PwChange';
 import Transaction from './pages/Admin/Transaction';
 import Profile from './pages/Admin/Profile';
 import CurrentStatus from './pages/User/CurrentStatus';
-
+import Blockchain from './pages/Admin/blockchain/src/Blockchain';
 
 
 function App() {
   return (
     <Router>
     <ThemeProvider theme={theme}>
+    <Header/>
     <GlobalStyle />
-      <Header />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
       <Switch>
+     
             <Route exact path="/" component = {Auth (Home, null, false) }/>
             <Route exact path="/register" component = { Auth(Register, false, false) } />
             <Route exact path="/login" component = { Auth( Login, false, false) } />
@@ -58,6 +59,7 @@ function App() {
             <Route exact path="/passwordChange/:userId" component = { Auth( PwChange , false, false) } />
             <Route exact path="/admin/transaction" component = { Auth( Transaction , true, true) } />
             <Route exact path="/admin/profile" component = { Auth( Profile , true, true) } />
+            <Route exact path="/admin/blockchain/:orderId" component = { Auth( Blockchain , true, true) } />
             
        </Switch>
        </div>

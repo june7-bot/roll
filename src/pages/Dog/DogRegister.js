@@ -176,6 +176,7 @@ export default function DogRegister(props) {
                     <div className="custom-file">
                       <Form.Control 
                             id="file"
+
                             type="file"
                             accept = ".jpg"
                             onChange={(e) => setFile(e.target.files[0]) }
@@ -185,10 +186,6 @@ export default function DogRegister(props) {
                           
                     </div>
                   
-
-                       
-                      
-                   
                       <S.btnForm>
                           <button onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn"
                           style={{fontFamily: "'Cafe24Oneprettynight"}}>
