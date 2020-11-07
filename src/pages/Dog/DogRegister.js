@@ -71,10 +71,11 @@ const S = {
   }
 
 export default function DogRegister(props) {
-    const dispatch = useDispatch();
-    const id = useSelector(state => state.user.userData)
-    const [file, setFile] = useState('');
-
+  const dispatch = useDispatch();
+  const id = useSelector(state => state.user.userData)
+  const [file, setFile] = useState('');
+  const [nose, setNose] = useState('');
+  const [birth, setBirth] = useState('');
     return (
  
 
@@ -96,10 +97,12 @@ export default function DogRegister(props) {
           onSubmit={(values, { setSubmitting }) => {
         
             let formData =  new FormData();
-            formData.append('file', file);
             formData.append('name', values.name);
             formData.append('price', values.price);
-            formData.append('owner', id.userId)
+            formData.append('owner', id.userId);
+            formData.append('picture', file);
+            formData.append('birth', birth);
+            formData.append('nose', nose);
          
             setTimeout(() => {
 
@@ -129,69 +132,91 @@ export default function DogRegister(props) {
               setFieldValue
             } = props;
             return (
-        <S.Wrapper>
-            <S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>강아지 등록</S.Header>
-                  <S.Content>
-                      <div class="container">
-                      <S.FormWrap>
-                      <S.Ilable for = "name" style={{fontFamily: "'yg-jalnan'"}}>이름 :</S.Ilable>
-                        <S.Box
-                          id="name"
-                          name = "name"
-                          placeholder="Enter your name"
-                          type="name"
-                          value={values.name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                       
-                        />
-                       
-                      </S.FormWrap>
-        
-                      <S.FormWrap>
-                      <S.Ilable for = "price" style={{fontFamily: "'yg-jalnan'"}}>가격 :</S.Ilable>
-                        <S.Box
-                          id="price"
-                          name = "price"
-                          placeholder="Enter your price"
-                          type="price"
-                          value={values.price}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-              
-                        /></S.FormWrap>
-
-                      <S.FormWrap>
-                      <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문 :</S.Ilable>
-                        <S.Box
-                          id="file"
-                          placeholder="Enter your nose"
-                          type="file"
-                          accept = ".jpg"
-                          onChange={(e) => setFile(e.target.files[0]) }
-                          onBlur={handleBlur}
-                        />
-
-                       
-                      </S.FormWrap>
-                   
-                      <S.btnForm>
-                          <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-gradient-danger btn-rounded btn-fw"
-                          style={{fontFamily: "'Cafe24Oneprettynight"}}>
-                             분양등록
-                          </S.btn>
-                      </S.btnForm>
-                      </div>
-                  </S.Content>
-                  </S.Wrapper>
-                 
-                );
-              }}
-              
-               </Formik>
+              <S.Wrapper>
+              <S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>강아지 등록</S.Header>
+                    <S.Content>
+                        <div class="container">
+                        <S.FormWrap>
+                        <S.Ilable for = "name" style={{fontFamily: "'yg-jalnan'"}}>이름 :</S.Ilable>
+                          <S.Box
+                            id="name"
+                            name = "name"
+                            placeholder="Enter your name"
+                            type="name"
+                            value={values.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                         
+                          />
+                         
+                        </S.FormWrap>
+          
+                        <S.FormWrap>
+                        <S.Ilable for = "price" style={{fontFamily: "'yg-jalnan'"}}>가격 :</S.Ilable>
+                          <S.Box
+                            id="price"
+                            name = "price"
+                            placeholder="Enter your price"
+                            type="price"
+                            value={values.price}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                 
-    );
-            };
-           
-        
-
+                          /></S.FormWrap>
+  
+                        <S.FormWrap>
+                        <S.Ilable for = "picture" style={{fontFamily: "'yg-jalnan'"}}>코지문 :</S.Ilable>
+                          <S.Box
+                            id="picture"
+                            placeholder="강아지 사진 넣어주세요"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setFile(e.target.files[0]) }
+                            onBlur={handleBlur}
+                          />
+                        </S.FormWrap>
+  
+                        
+                        <S.FormWrap>
+                        <S.Ilable for = "birth">출생증명서 :</S.Ilable>
+                          <S.Box
+                            id="birth"
+                            placeholder="출생증명서 넣어주세요"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setBirth(e.target.files[0]) }
+                            onBlur={handleBlur}
+                          />
+                        </S.FormWrap>
+  
+  
+                        
+                        <S.FormWrap>
+                        <S.Ilable for = "nose">코지문 :</S.Ilable>
+                          <S.Box
+                            id="nose"
+                            placeholder="Enter your nose"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setNose(e.target.files[0]) }
+                            onBlur={handleBlur}
+                          />
+                        </S.FormWrap>
+                     
+                        <S.btnForm>
+                            <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-gradient-danger btn-rounded btn-fw"
+                            style={{fontFamily: "'Cafe24Oneprettynight"}}>
+                               분양등록
+                            </S.btn>
+                        </S.btnForm>
+                        </div>
+                    </S.Content>
+                    </S.Wrapper>
+                   
+                  );
+                }}
+                
+                 </Formik>
+                  
+      );
+              };

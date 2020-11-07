@@ -2,20 +2,18 @@ import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import '../index.css';
 import { useSelector } from "react-redux";
-import imgA from '../assets/login.PNG';
-import { Link } from 'react-router-dom'
+import imgA from '../assets/login.png';
 import { Button } from 'reactstrap';
-import axios from 'axios';
 
 const S = {
   Wrapper: styled.div`
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     transition: all 0.2s ease-in-out;
     background-color: ${({ isScroll, theme }) =>
-    theme.palette.white};
+    theme.palette.blue};
     box-shadow: ${props =>
       props.isScroll ? '0 0 16px 8px rgba(0, 0, 0, 0.03)' : 'none'};
   `,
@@ -24,7 +22,7 @@ const S = {
     max-width: 1180px;
     margin: auto;
     transition: all 0.2s ease-in-out;
-    height: ${props => (props.isScroll ? '70px' : '100px')};
+    height: ${props => (props.isScroll ? '70px' : '80px')};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -179,9 +177,9 @@ export default function Header() {
   return (
 
     
-    <S.Wrapper isScroll={isScroll}>
-      <S.Header isScroll={isScroll}>
-        <S.Logo isScroll={isScroll}>
+    <S.Wrapper isScroll={ isScroll }>
+      <S.Header isScroll={ isScroll }>
+        <S.Logo isScroll={ isScroll}>
         <div>
           <a href='/'>
         <img

@@ -56,7 +56,7 @@ export default function DogInfo(props) {
         <div>         
        
               { items.name }, {items.price}
-              <img src={ `http://127.0.0.1:8888/${ items.photo }` } width = {250} />   
+              <img src={ `http://127.0.0.1:8080/upload/dogs/${ items.photo }` } width = {250} />   
               <button onClick = { () => {onClickHandler(items.id)} } > 입양하기</button>
             
         

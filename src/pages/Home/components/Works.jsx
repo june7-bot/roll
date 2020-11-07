@@ -24,7 +24,7 @@ const S = {
     ${props => props.theme.typography.subtitle};
     color: ${props => props.theme.palette.black};
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   `,
   Description: styled.p`
     ${props => props.theme.typography.description};
@@ -79,24 +79,24 @@ const S = {
 const WORKS_ITEMS = [
   {
     image: worksImage01,
-    title: '이름',
-    label: '출생연도',
-    description:
-      '특징',
+    title: '신도림점[도그블록]',
+    //label: '조회수 : ',
+  
+
+    // description:
+    //   '특징',
   },
   {
     image: worksImage02,
-    title: '이름',
-    label: '출생연도',
-    description:
-      '특징',
+    title: '신도림점[도그블록]',
+    //label: '출생연도',
+
   },
   {
     image: worksImage03,
-    title: '이름',
-    label: '출생연도',
-    description:
-      '특징',
+    title: '신도림점[도그블록]',
+    //label: '출생연도',
+
   },
 ];
 
@@ -126,7 +126,7 @@ const Works = () => {
           </S.ListItem>
         ))}
       </S.List>
-      <Button fill="outline">반려견들 더 보기</Button>
+      <Button  fill="outline" as = "a" href="/doglist" >반려견들 더 보기</Button>
     </S.Wrapper>
   );
 };
