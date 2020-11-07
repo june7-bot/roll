@@ -9,6 +9,35 @@ import styled from 'styled-components';
 
 export default function MyPage() {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     const S ={
         btn : styled.button`
     width: 48%;
