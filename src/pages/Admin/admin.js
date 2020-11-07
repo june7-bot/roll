@@ -2,8 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { myPage } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import '../../index.css';
+import styled from 'styled-components';
 
 export default function Admin() {
+
+    const S ={
+        btn : styled.button`
+    width: 48%;
+    padding: 14px 0 14px;
+    
+    `
+    }
     
     const dispatch = useDispatch();
 
@@ -21,16 +30,24 @@ export default function Admin() {
 
     return (
         <div>
-            <div style={{fontSize: 50, fontFamily: "'yg-jalnan'"}}>
-                <h1 className="card-title">관리자페이지</h1><br/><br/>
-            </div>
-                <div className="template-demo" style={{fontFamily: "'Cafe24Oneprettynight"}}>
-                    <a href={"/admin/transaction"}><button type="button" className="btn btn-inverse-primary  btn-lg">거래 정보 조회</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href={"/admin/profile"}><button type="button" className="btn btn-inverse-primary  btn-lg">회원 정보 조회</button></a><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <a href={"/admin/blockchain"}><button type="button" className="btn btn-inverse-primary  btn-lg">블록 체인 조회</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    
+        <div className="d-flex align-items-center auth px-0">
+          <div className="row w-100 mx-0">
+            <div className="col-lg-4 mx-auto">
+              <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                <div className="brand-logo">
+                    <img src={require("../../assets/login.PNG")} alt="logo" />
                 </div>
-        </div>
+                <div style={{fontSize: 30, fontFamily: 'ImcreSoojin', textAlign: "center"}}>
+                    <h4 className="card-title">관리자페이지</h4><br/><br/>
+                </div>
+                    <a href={`/admin/transaction`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>거래 정보</S.btn></a>
+                    <a href={`/admin/profile`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>회원 정보 조회</S.btn></a><br/><br/>
+                    <a href={`/admin/blockchain`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>블록 체인</S.btn></a>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
         
     )
 }

@@ -6,7 +6,6 @@ import {
   Feature,
   Figure,
   Works,
-  Contact,
   Banner,
 } from './components';
 

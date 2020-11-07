@@ -29,7 +29,7 @@ export default function MyParcel(props) {
 
     return (
       <div class="container">
-      <h1 style={{fontFamily: "'yg-jalnan'"}}>분양한 강아지</h1>
+      <h1 style={{fontFamily: "'yg-jalnan'"}}>입양한 강아지</h1>
       <CardGroup class="card-columns"  style={{fontFamily: "'Cafe24Oneprettynight"}}>
       { dogs.map ( dog =>
        

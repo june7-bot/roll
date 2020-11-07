@@ -44,7 +44,7 @@ useEffect(() => {
                 이름:{ item.name }<br/>
                 분양가격:{item.price}원
                 </Card.Text><br/>
-                <a href={`/doginfo/${item.id}`} ><Button  className="btn btn info">상 세 보 기</Button></a>
+                <a href={`/doginfo/${item.id}`} ><Button  className="btn btn-danger">상 세 보 기</Button></a>
                 
               </Card.Body>
             </Card>

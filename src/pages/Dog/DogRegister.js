@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Formik } from 'formik'; 
 import { registerDog } from "../../_actions/dog_action";
 import { useDispatch, useSelector } from "react-redux";
+import { Form } from 'react-bootstrap';
 import axios from 'axios'
 import { USER_SERVER } from '../../pages/Config';
 import './dog.css';
@@ -19,7 +20,7 @@ const S = {
      `,
     Content: styled.div`
     display : flex, block;
-    text-align : center;
+  
     position : relative;
     left : 10px;
     `,
@@ -41,7 +42,7 @@ const S = {
     bottom : 0;
     display: inline-block;
     width: 140px;
-    text-align: right;  
+    text-align: left;  
     font-size: 15px;
     font-weight: 700;
     `,
@@ -130,12 +131,20 @@ export default function DogRegister(props) {
             } = props;
             return (
         <S.Wrapper>
-            <S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>강아지 등록</S.Header>
+          <div>
+            <div className="d-flex align-items-center auth px-0">
+              <div className="row w-100 mx-0">
+                <div className="col-lg-4 mx-auto">
+                  <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                    <div className="brand-logo">
+                      <img src={require("../../assets/login.PNG")} alt="logo" />
+                    </div>
+                    <h2 style={{fontFamily: 'ImcreSoojin'}}>강아지 등록</h2><br/><br/>
                   <S.Content>
                       <div class="container">
-                      <S.FormWrap>
-                      <S.Ilable for = "name" style={{fontFamily: "'yg-jalnan'"}}>이름 :</S.Ilable>
-                        <S.Box
+                      
+                      <S.Ilable for = "name" style={{fontFamily: "'yg-jalnan'"}}>이름</S.Ilable>
+                        <Form.Control
                           id="name"
                           name = "name"
                           placeholder="Enter your name"
@@ -143,14 +152,12 @@ export default function DogRegister(props) {
                           value={values.name}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                       
                         />
-                       
-                      </S.FormWrap>
+                      <br/>
         
-                      <S.FormWrap>
-                      <S.Ilable for = "price" style={{fontFamily: "'yg-jalnan'"}}>가격 :</S.Ilable>
-                        <S.Box
+                      
+                      <S.Ilable for = "price" style={{fontFamily: "'yg-jalnan'"}}>가격</S.Ilable>
+                        <Form.Control
                           id="price"
                           name = "price"
                           placeholder="Enter your price"
@@ -159,30 +166,42 @@ export default function DogRegister(props) {
                           onChange={handleChange}
                           onBlur={handleBlur}
               
-                        /></S.FormWrap>
-
-                      <S.FormWrap>
-                      <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문 :</S.Ilable>
-                        <S.Box
-                          id="file"
-                          placeholder="Enter your nose"
-                          type="file"
-                          accept = ".jpg"
-                          onChange={(e) => setFile(e.target.files[0]) }
-                          onBlur={handleBlur}
                         />
+                        <br/>
+
+                      
+                      <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문</S.Ilable>
+                      
+                      
+                    <div className="custom-file">
+                      <Form.Control 
+                            id="file"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setFile(e.target.files[0]) }
+                            onBlur={handleBlur}
+                            className="custom-file-label"
+                          />
+                          
+                    </div>
+                  
 
                        
-                      </S.FormWrap>
+                      
                    
                       <S.btnForm>
-                          <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-gradient-danger btn-rounded btn-fw"
+                          <button onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn"
                           style={{fontFamily: "'Cafe24Oneprettynight"}}>
                              분양등록
-                          </S.btn>
+                          </button>
                       </S.btnForm>
-                      </div>
+                        </div>
                   </S.Content>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
                   </S.Wrapper>
                  
                 );

@@ -1,10 +1,10 @@
 import React from "react";
-
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import styled from 'styled-components'
+import { Form } from 'react-bootstrap';
 
   const S = {
     textarea: styled.textarea`
@@ -13,7 +13,7 @@ import styled from 'styled-components'
     height:100px; 
     overflow-x:hidden;
     overflow-y:auto;
-    margin-left: 30px;
+    margin-left: auto;
     margin-top: 30px;
     border-style: inset;
     border-width: 2px;
@@ -29,7 +29,6 @@ import styled from 'styled-components'
      `,
     Content: styled.div`
     display : flex, block;
-    text-align : center;
     position : relative;
     left : 10px;
     `,
@@ -53,13 +52,14 @@ import styled from 'styled-components'
     background: #fff;
     `,
     Ilable : styled.label`
-    padding-right : 20px;
+    padding-right : 0px;
     bottom : 0;
     display: inline-block;
     width: 140px;
-    text-align: right;  
+    text-align: left;  
     font-size: 15px;
     font-weight: 700;
+    
     `,
     ulable : styled.label`
   
@@ -71,7 +71,9 @@ import styled from 'styled-components'
       height: 5px;
       margin-top: -1px;
       position: relative;
+      text-align: right; 
       left : 60px   
+      padding-right : 0px;
       `,
 
     btn : styled.button`
@@ -105,16 +107,16 @@ function Register(props) {
         acceptTerms : false
       }}
       validationSchema={Yup.object().shape({
-
+        
         email: Yup.string()
-          .email('Email is invalid')
-          .required('Email is required'),
+          .email('이메일을 확인해주세요.')
+          .required('이메일을 입력해주세요.'),
         password: Yup.string()
-          .min(6, 'Password must be at least 6 characters')
-          .required('Password is required'),
+          .min(6, '비밀번호는 최소 6자 이상입니다.')
+          .required('비밀번호를 입력해주세요.'),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required'),
+          .oneOf([Yup.ref('password'), null], '비밀번호와 일치해야 합니다.')
+          .required('비밀번호를 재입력해주세요'),
         acceptTerms : Yup.boolean()
           .oneOf([true],'You must accept the terms and conditions')
       })}
@@ -153,16 +155,20 @@ function Register(props) {
           handleReset,
         } = props;
         return (
-<S.Wrapper>
-
-
-  
-<S.Header style={{fontFamily: "'Cafe24Oneprettynight"}}>회원가입</S.Header>
-          <S.Content>
-
-              <S.FormWrap>
-              <S.Ilable for = "email" style={{fontFamily: "'yg-jalnan'"}}>이메일 입력 :</S.Ilable>
-                <S.Box
+          <S.Wrapper >
+          <div>
+            <div className="d-flex align-items-center auth px-0">
+              <div className="row w-100 mx-0">
+                <div className="col-lg-4 mx-auto">
+                  <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                    <div className="brand-logo">
+                      <img src={require("../../assets/login.PNG")} alt="logo" />
+                    </div>
+                    <h2 style={{fontFamily: 'ImcreSoojin'}}>회원가입</h2>          
+               <S.Content>
+                <S.FormWrap onSubmit={handleSubmit}>
+                <S.Ilable for = "email" style={{fontFamily: "'yg-jalnan'" }}>이메일</S.Ilable>
+               <Form.Control
                   id="email"
                   placeholder="Enter your Email"
                   type="email"
@@ -173,32 +179,32 @@ function Register(props) {
                     errors.email && touched.email ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <S.inputfeedback>{errors.email}</S.inputfeedback>
-                )}
-              </S.FormWrap>
+                  {errors.email && touched.email && (
+               <S.inputfeedback>{errors.email}</S.inputfeedback>
+             )}
+               <br/>
 
-              <S.FormWrap>
-              <S.Ilable for = "password" style={{fontFamily: "'yg-jalnan'"}}>비밀번호 입력 :</S.Ilable>
-                <S.Box
-                  id="password"
-                  placeholder="Enter your password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.password && touched.password ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.password && touched.password && (
-                  <S.inputfeedback>{errors.password}</S.inputfeedback>
-                )}
-              </S.FormWrap>
+         
+          <S.Ilable for = "password" style={{fontFamily: "'yg-jalnan'" }}>비밀번호 입력</S.Ilable>
+            <Form.Control
+              id="password"
+              placeholder="Enter your password"
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.password && touched.password ? 'text-input error' : 'text-input'
+              }
+            />
+            {errors.password && touched.password && (
+              <S.inputfeedback>{errors.password}</S.inputfeedback>
+            )}
+          <br/>
 
-              <S.FormWrap>
-              <S.Ilable for = "confirmPassword" style={{fontFamily: "'yg-jalnan'"}}>비밀번호 재입력 :</S.Ilable>
-                <S.Box
+          
+          <S.Ilable for = "confirmPassword" style={{fontFamily: "'yg-jalnan'" }}>비밀번호 확인</S.Ilable>
+                <Form.Control
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"
                   type="password"
@@ -212,38 +218,37 @@ function Register(props) {
                 {errors.confirmPassword && touched.confirmPassword && (
                   <S.inputfeedback>{errors.confirmPassword}</S.inputfeedback>
                 )}
-              </S.FormWrap>
-     
-     <S.FormWrap>
-    
-     <S.ulable for = "acceptTerms">개인정보 수집 및 이용 동의(필수)</S.ulable>
-    <S.Box2  type="checkbox" name="acceptTerms" 
-            onClick = { handleChange }
-     className={errors.acceptTerms && touched.acceptTerms ? 'text-input error' : 'text-input'}
-    
-    /> 
-    {errors.acceptTerms && touched.acceptTerms && (
-      <S.inputfeedback>{errors.acceptTerms}</S.inputfeedback>
-                )}<br/><br/>
-
-
-
-
-
-      <S.textarea>
-  여러분을 환영합니다.
-도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 도그블럭 서비스의 이용과 관련하여 도그블럭 서비스를 제공하는 도그블럭 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
- </S.textarea>
-</S.FormWrap>
+              
+             
+             
+           <S.textarea>
+              여러분을 환영합니다.
+            도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 도그블럭 서비스의 이용과 관련하여 도그블럭 서비스를 제공하는 도그블럭 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+            도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+            도그블럭 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+            </S.textarea>
+            <S.ulable for = "acceptTerms">개인정보 수집 및 이용 동의(필수)</S.ulable>
+              <S.Box2  type="checkbox" name="acceptTerms" 
+                      onClick = { handleChange }
+              className={errors.acceptTerms && touched.acceptTerms ? 'text-input error' : 'text-input' }
+              /> 
+            
+              {errors.acceptTerms && touched.acceptTerms && (
+                <S.inputfeedback>{errors.acceptTerms}</S.inputfeedback>
+                          )}
+            </S.FormWrap>
 
               <S.btnForm>
-                <S.btn onClick={handleSubmit} type="submit" disabled={isSubmitting} style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-gradient-danger btn-rounded btn-fw">
+                <button onClick={handleSubmit} type="submit" disabled={isSubmitting} style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn">
                   가입
-                </S.btn>
+                </button>
               </S.btnForm>
-          </S.Content>
+              </S.Content>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
           </S.Wrapper>
         );
       }}

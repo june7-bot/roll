@@ -10,7 +10,7 @@ import axios from 'axios';
 const S = {
   Wrapper: styled.div`
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     transition: all 0.2s ease-in-out;

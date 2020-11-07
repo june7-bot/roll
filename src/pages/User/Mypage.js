@@ -5,8 +5,17 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 //import './Mypage.css';
 import '../../index.css';
+import styled from 'styled-components';
 
 export default function MyPage() {
+
+    const S ={
+        btn : styled.button`
+    width: 48%;
+    padding: 14px 0 14px;
+    
+    `
+    }
     
   
     const [id, setId] = useState('');
@@ -26,18 +35,27 @@ export default function MyPage() {
     }, []);
 
     return (
-
-        <div>
-            <div style={{fontSize: 50, fontFamily: "'yg-jalnan'"}}>
-                <h1 className="card-title">마이페이지</h1><br/><br/>
-            </div>
-                <div className="template-demo" style={{fontFamily: "'Cafe24Oneprettynight"}}>
-                    <a href={`/mypage/info/${ id }`}><button type="button" className="btn btn-inverse-primary  btn-lg">회원정보 수정</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href={`/mypage/myadopt/${ id }`}><button type="button" className="btn btn-inverse-primary  btn-lg">입양관리</button></a><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <a href={`/mypage/currentstatus/${ id }`}><button type="button" className="btn btn-inverse-primary  btn-lg">진행중인 거래</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href={`/mypage/myparcel/${ id }`}><button type="button" className="btn btn-inverse-primary  btn-lg">분양관리</button></a>
+    <div>
+        <div className="d-flex align-items-center auth px-0">
+          <div className="row w-100 mx-0">
+            <div className="col-lg-4 mx-auto">
+              <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                <div className="brand-logo">
+                    <img src={require("../../assets/login.PNG")} alt="logo" />
                 </div>
+                <div style={{fontSize: 30, fontFamily: 'ImcreSoojin', textAlign: "center"}}>
+                    <h4 className="card-title">마이페이지</h4><br/><br/>
+                </div>
+                    <a href={`/mypage/info/${ id }`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>회원정보 수정</S.btn></a>
+                    <a href={`/mypage/myadopt/${ id }`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>입양관리</S.btn></a><br/><br/>
+                    <a href={`/mypage/currentstatus/${ id }`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>진행중인 거래</S.btn></a>
+                    <a href={`/mypage/myparcel/${ id }`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>분양관리</S.btn></a> 
+              </div>
+            </div>
+          </div>
+        </div>  
       </div>
+        
     )
 }
 
