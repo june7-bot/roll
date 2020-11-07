@@ -18,7 +18,7 @@ import { Header } from './components';
 import DogRegister from './pages/Dog/DogRegister';
 import DogList from './pages/Dog/DogList';
 import DogInfo from './pages/Dog/DogInfo';
-import MyPage from './pages/User/Mypage';
+import MyPage from './pages/User/MyPage';
 import MyPageInfo from './pages/User/MyPageInfo';
 import MyAdopt from './pages/User/MyAdopt';
 import MyParcel from './pages/User/MyParcel';

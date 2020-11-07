@@ -19,6 +19,7 @@ const S = {
      position: relative;
      `,
     Content: styled.div`
+    position: fixed;
     display : flex, block;
   
     position : relative;
@@ -71,64 +72,67 @@ const S = {
 
   }
 
-export default function DogRegister(props) {
+  export default function DogRegister(props) {
     const dispatch = useDispatch();
     const id = useSelector(state => state.user.userData)
     const [file, setFile] = useState('');
-
-    return (
- 
-
-        <Formik
-          initialValues={{
-            name: '',
-            price: '',
+    const [nose, setNose] = useState('');
+    const [birth, setBirth] = useState('');
+      return (
+   
+  
+          <Formik
+            initialValues={{
+              name: '',
+              price: '',
+            
+            }}
+            validate={values => {
+              const errors = {};
+              if (!values.name) {
+                errors.name = 'Required';
+              } 
+              return errors;
+            }}
+  
           
-          }}
-          validate={values => {
-            const errors = {};
-            if (!values.name) {
-              errors.name = 'Required';
-            } 
-            return errors;
-          }}
-
-        
-          onSubmit={(values, { setSubmitting }) => {
-        
-            let formData =  new FormData();
-            formData.append('file', file);
-            formData.append('name', values.name);
-            formData.append('price', values.price);
-            formData.append('owner', id.userId)
-         
-            setTimeout(() => {
-
-              dispatch(registerDog(formData)).then(response => {
+            onSubmit={(values, { setSubmitting }) => {
           
-                   if (response.payload) {
-
-                   props.history.push("/doglist");
-                 } else {
-                   alert('에러발생');
-                 }
-              })
-              setSubmitting(false);
-            }, 500);
-          }}
-        >{props => {
-            const {
-              values,
-              touched,
-              errors,
-              dirty,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              handleReset,
-              setFieldValue
-            } = props;
+              let formData =  new FormData();
+              formData.append('name', values.name);
+              formData.append('price', values.price);
+              formData.append('owner', id.userId);
+              formData.append('picture', file);
+              formData.append('birth', birth);
+              formData.append('nose', nose);
+           
+              setTimeout(() => {
+  
+                dispatch(registerDog(formData)).then(response => {
+            
+                     if (response.payload) {
+  
+                     props.history.push("/doglist");
+                   } else {
+                     alert('에러발생');
+                   }
+                })
+                setSubmitting(false);
+              }, 500);
+            }}
+          >{props => {
+              const {
+                values,
+                touched,
+                errors,
+                dirty,
+                isSubmitting,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                handleReset,
+                setFieldValue
+              } = props;
             return (
         <S.Wrapper>
           <div>
@@ -137,7 +141,7 @@ export default function DogRegister(props) {
                 <div className="col-lg-4 mx-auto">
                   <div className="auth-form-light text-left py-5 px-4 px-sm-5">
                     <div className="brand-logo">
-                      <img src={require("../../assets/login.PNG")} alt="logo" />
+                      <img src={require("../../assets/login.png")} alt="logo" />
                     </div>
                     <h2 style={{fontFamily: 'ImcreSoojin'}}>강아지 등록</h2><br/><br/>
                   <S.Content>
@@ -170,22 +174,45 @@ export default function DogRegister(props) {
                         <br/>
 
                       
-                      <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문</S.Ilable>
-                      
-                      
+                    <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>강아지 사진</S.Ilable>
                     <div className="custom-file">
                       <Form.Control 
                             id="file"
-
                             type="file"
                             accept = ".jpg"
                             onChange={(e) => setFile(e.target.files[0]) }
                             onBlur={handleBlur}
                             className="custom-file-label"
                           />
-                          
                     </div>
-                  
+                    <br/>
+                    <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>출생증명서</S.Ilable>
+                    <div className="custom-file">
+                    <Form.Control
+                            id="birth"
+                            placeholder="출생증명서 넣어주세요"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setBirth(e.target.files[0]) }
+                            onBlur={handleBlur}
+                            className="custom-file-label"
+                          />
+                    </div>
+                    <br/>
+                    <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>코지문</S.Ilable>
+                    <div className="custom-file">
+                    <Form.Control
+                            id="nose"
+                            placeholder="Enter your nose"
+                            type="file"
+                            accept = ".jpg"
+                            onChange={(e) => setNose(e.target.files[0]) }
+                            onBlur={handleBlur}
+                            className="custom-file-label"
+                          />
+                    </div>
+
+
                       <S.btnForm>
                           <button onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn"
                           style={{fontFamily: "'Cafe24Oneprettynight"}}>
