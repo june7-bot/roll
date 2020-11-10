@@ -149,7 +149,7 @@ function LoginPage(props) {
                     <div className="col-lg-4 mx-auto">
                       <div className="auth-form-light text-left py-5 px-4 px-sm-5">
                         <div className="brand-logo">
-                          <img src={require("../../assets/login.png")} alt="logo" />
+                          <img src={require("../../assets/login.PNG")} alt="logo" />
                         </div>
                         <h2 style={{fontFamily: 'ImcreSoojin'}}>로그인</h2>
                         

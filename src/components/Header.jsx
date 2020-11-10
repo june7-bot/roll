@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import '../index.css';
 import { useSelector } from "react-redux";
-import imgA from '../assets/login.png';
+import imgA from '../assets/login.PNG';
 import { Button } from 'reactstrap';
 
 const S = {

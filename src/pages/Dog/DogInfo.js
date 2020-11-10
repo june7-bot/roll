@@ -2,7 +2,7 @@ import React,  { useEffect, useState } from 'react'
 import {oneDog } from "../../_actions/dog_action";
 import { useDispatch , useSelector } from "react-redux";
 import { orderDog } from "../../_actions/dog_action";
-
+import { Card } from 'react-bootstrap';
 
 
 export default function DogInfo(props) {
@@ -48,18 +48,50 @@ export default function DogInfo(props) {
 
     return (
 
-        <div>         
-                     반려견 정보<br/>        
-              이름 : { items.name } <br/>
-              견종 : {items.dogKind }<br/>
-              분양가 : {items.price}<br/>
-              나이 : {items.dogAge} <br/>
-              성별 : {items.dogGender}<br/>
-              접종여부 : {items.dogPrevent }<br/>
-              <img src={ `http://127.0.0.1:8080/upload/dogs/${ items.photo }` } width = {250} /><br/>   
-              <button onClick = { () => {onClickHandler(items.id)} } > 입양하기</button>
-            
+      <div>
+      <div className="d-flex align-items-center auth px-0">
+        <div className="row w-100 mx-0">
+          <div className="col-lg-4 mx-auto">
+            <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+              <div className="brand-logo">
+                <img src={require("../../assets/login.PNG")} alt="logo" />
+              </div>    
+              <div style={{fontSize: 30, fontFamily: 'ImcreSoojin', textAlign: "left"}}>
+                    <h4 className="card-title">반려견정보</h4><br/><br/>
+              </div>   
+              <Card key = {items.id} style={{alignItems: "center"}}>
+              {<Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ items.photo }` } width = {250} />}
+              <Card.Body style={{"align-items": "center", border: 1}}>
+                <Card.Text>
+                <table className="table table-hovored"> 
+              <tr>  
+              <th style={{fontFamily: "'yg-jalnan'"}}>이름</th>
+              <td>{ items.name } </td>
+              <th style={{fontFamily: "'yg-jalnan'"}}>견종</th>
+               <td>{items.dogKind }</td>
+               </tr>
+               <tr>
+               <th style={{fontFamily: "'yg-jalnan'"}}>분양가</th>
+              <td>{ items.price } </td>
+              <th style={{fontFamily: "'yg-jalnan'"}}>나이</th>
+               <td>{items.dogAge }</td>
+               </tr>
+             <tr>
+             <th style={{fontFamily: "'yg-jalnan'"}}>성별</th>
+              <td>{ items.dogGender } </td>
+              <th style={{fontFamily: "'yg-jalnan'"}}>접종여부</th>
+               <td>{items.dogPrevent }</td>
+             </tr>      
+              </table>
+                </Card.Text>
+              </Card.Body>
+              <button onClick = { () => {onClickHandler(items.id)} } className="btn btn-danger" style={{fontFamily: "'Cafe24Oneprettynight"}}> 입 양 하 기</button>
+            </Card>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
         
-        </div>
     )
             }

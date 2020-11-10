@@ -4,13 +4,13 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { changePw } from '../../_actions/user_actions'
 import { useDispatch } from "react-redux";
+import { Form } from 'react-bootstrap';
 import styled from 'styled-components'
 
   const S = {
     Header: styled.div`
     padding-top: 142px;
     padding-bottom: 50px;
-    text-align: center;
     font-size : 30pt;
     `,
      Wrapper: styled.div`
@@ -18,7 +18,6 @@ import styled from 'styled-components'
      `,
     Content: styled.div`
     display : flex, block;
-    text-align : center;
     position : relative;
     left : 10px;
     `,
@@ -40,7 +39,7 @@ import styled from 'styled-components'
     bottom : 0;
     display: inline-block;
     width: 140px;
-    text-align: right;  
+    text-align: left;  
     font-size: 15px;
     font-weight: 700;
     `,
@@ -50,6 +49,7 @@ import styled from 'styled-components'
       margin-top: -1px;
       position: relative;
       left : 60px   
+      text-align: right;
       `,
 
     btn : styled.button`
@@ -126,21 +126,39 @@ function MyPageInfo(props) {
           handleReset,
         } = props;
         return (
-<S.Wrapper>
-<S.Header>회원정보 수정</S.Header>
-          <S.Content>
-        
+          <S.Wrapper>
+              <div>
+                <div className="d-flex align-items-center auth px-0">
+                  <div className="row w-100 mx-0">
+                    <div className="col-lg-4 mx-auto">
+                      <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div className="brand-logo">
+                          <img src={require("../../assets/login.PNG")} alt="logo" />
+                        </div>
+                        <h2 style={{fontFamily: 'ImcreSoojin'}}>회원정보 수정</h2>
+                        <br/><br/>
+               <S.Content>
+              
+              <S.Ilable for = "email" style={{fontFamily: "'yg-jalnan'" }}>이메일</S.Ilable>
+              <Form.Control
+                  id="id"
+                  placeholder= {id}
+                  type="id"
+                  value={values.id}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.id && touched.id ? 'text-input error' : 'text-input'
+                  }
+                  readOnly
+                />
+                 
+              <br/>
+              
 
-              <S.FormWrap>
-              <S.Ilable for = "email">이메일 :</S.Ilable>
-                
-                 { id }
-                     
-              </S.FormWrap>
-
-              <S.FormWrap>
-              <S.Ilable for = "password">비밀번호 변경 :</S.Ilable>
-                <S.Box
+             
+              <S.Ilable for = "password" style={{fontFamily: "'yg-jalnan'" }}>비밀번호 변경</S.Ilable>
+                <Form.Control
                   id="password"
                   placeholder=  "Enter your Password"
                   type="password"
@@ -154,11 +172,11 @@ function MyPageInfo(props) {
                 {errors.password && touched.password && (
                   <S.inputfeedback>{errors.password}</S.inputfeedback>
                 )}
-              </S.FormWrap>
-
-              <S.FormWrap>
-              <S.Ilable for = "confirmPassword">비밀번호 재입력 :</S.Ilable>
-                <S.Box
+              
+              <br/>
+              
+              <S.Ilable for = "confirmPassword" style={{fontFamily: "'yg-jalnan'" }}>비밀번호 재입력</S.Ilable>
+                <Form.Control
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"
                   type="password"
@@ -172,14 +190,18 @@ function MyPageInfo(props) {
                 {errors.confirmPassword && touched.confirmPassword && (
                   <S.inputfeedback>{errors.confirmPassword}</S.inputfeedback>
                 )}
-              </S.FormWrap>
+             <br/><br/>
 
-              <S.btnForm>
-                <S.btn onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                  Submit
-                </S.btn>
-              </S.btnForm>
+             <button onClick={handleSubmit} type="primary" disabled={isSubmitting} style={{fontFamily: "'Cafe24Oneprettynight"}} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn">
+                  회원정보 수정
+                  </button>
+             
           </S.Content>
+          </div>
+                    </div>
+                  </div>
+                </div>  
+              </div>
           </S.Wrapper>
         );
       }}

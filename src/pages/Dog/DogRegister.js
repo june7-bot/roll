@@ -157,7 +157,7 @@ const S = {
                 <div className="col-lg-4 mx-auto">
                   <div className="auth-form-light text-left py-5 px-4 px-sm-5">
                     <div className="brand-logo">
-                      <img src={require("../../assets/login.png")} alt="logo" />
+                      <img src={require("../../assets/login.PNG")} alt="logo" />
                     </div>
                     <h2 style={{fontFamily: 'ImcreSoojin'}}>강아지 등록</h2><br/><br/>
                   <S.Content>
@@ -286,7 +286,7 @@ const S = {
                       <S.btnForm>
                           <button onClick={handleSubmit} type="primary" disabled={isSubmitting} className="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn"
                           style={{fontFamily: "'Cafe24Oneprettynight"}}>
-                             분양등록
+                             분 양 등 록
                           </button>
                       </S.btnForm>
                         </div>
