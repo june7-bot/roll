@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { Formik } from 'formik'; 
 import { registerDog } from "../../_actions/dog_action";
 import { useDispatch, useSelector } from "react-redux";
-import { Form } from 'react-bootstrap';
-import axios from 'axios'
-import { USER_SERVER } from '../../pages/Config';
+import { Form, Dropdown, DropdownButton, InputGroup, FormControl } from 'react-bootstrap';
 import './dog.css';
+
 
 const S = {
     Header: styled.div`
@@ -73,11 +72,16 @@ const S = {
   }
 
   export default function DogRegister(props) {
+    const dogkind = ["비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔","비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔","골든 리트리버", "시베리안 허스키", "보더콜리", "사모예드" , "말라뮤트" ]
+    const doggender = ["남아", "여아"]
+    const prevent = ["1차접종 완료", "2차접종 완료", "3차접종 완료", "4차접종 완료", "5차접종 완료"]
+    
     const dispatch = useDispatch();
     const id = useSelector(state => state.user.userData)
     const [file, setFile] = useState('');
     const [nose, setNose] = useState('');
     const [birth, setBirth] = useState('');
+
       return (
    
   
@@ -85,6 +89,10 @@ const S = {
             initialValues={{
               name: '',
               price: '',
+              age : '',
+              kind : '비숑',
+              gender : '남아',
+              prevent : '1차접종 완료'
             
             }}
             validate={values => {
@@ -99,12 +107,20 @@ const S = {
             onSubmit={(values, { setSubmitting }) => {
           
               let formData =  new FormData();
+              console.log(values.name);
+              console.log(values.kind);
+              console.log(values.gender);
               formData.append('name', values.name);
               formData.append('price', values.price);
+              formData.append('kind', values.kind);
+              formData.append('gender', values.gender);
+              formData.append('prevent', values.prevent);
+              formData.append('age', values.age);
               formData.append('owner', id.userId);
               formData.append('picture', file);
               formData.append('birth', birth);
               formData.append('nose', nose);
+              
            
               setTimeout(() => {
   
@@ -151,7 +167,7 @@ const S = {
                         <Form.Control
                           id="name"
                           name = "name"
-                          placeholder="Enter your name"
+                          placeholder="이름 입력해주세요"
                           type="name"
                           value={values.name}
                           onChange={handleChange}
@@ -164,16 +180,70 @@ const S = {
                         <Form.Control
                           id="price"
                           name = "price"
-                          placeholder="Enter your price"
+                          placeholder="분양가 입력해주세요"
                           type="price"
                           value={values.price}
                           onChange={handleChange}
                           onBlur={handleBlur}
-              
                         />
                         <br/>
 
-                      
+                      <S.Ilable for = "age" style={{fontFamily: "'yg-jalnan'"}}>나이</S.Ilable>
+                        <Form.Control
+                          id="age"
+                          name = "age"
+                          placeholder="나이 입력해주세요"
+                          type="number"
+                          value={values.age}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        <br/>
+
+                        <S.Ilable for = "kind" style={{fontFamily: "'yg-jalnan'"}}>견종</S.Ilable>
+                        <Form.Group>
+                            
+                            <Form.Control as="select" id="kind" name = "kind" value = {values.kind  } onChange = { handleChange } >
+                               
+                              {dogkind.map(dogskind => 
+                              
+                                 <option value = { dogskind } > { dogskind }</option>
+                              )}
+
+                            </Form.Control>
+                        </Form.Group>       
+                    
+
+                        <S.Ilable for = "gender" style={{fontFamily: "'yg-jalnan'"}}>성별</S.Ilable>
+                        <Form.Group>
+                            
+                            <Form.Control as="select" id="gender" name = "gender" value = {values.gender  } onChange = { handleChange } >
+                               
+                              {doggender.map(gender => 
+                              
+                                 <option value = { gender } > { gender }</option>
+                              )}
+
+                            </Form.Control>
+                        </Form.Group>       
+                        <br/>
+
+                        
+                        <S.Ilable for = "prevent" style={{fontFamily: "'yg-jalnan'"}}> 접종 여부</S.Ilable>
+                        <Form.Group>
+                            
+                            <Form.Control as="select" id="prevent" name = "prevent" value = {values.prevent  } onChange = { handleChange } >
+                               
+                              {prevent.map(dogprevent => 
+                              
+                                 <option value = { dogprevent } > { dogprevent }</option>
+                              )}
+
+                            </Form.Control>
+                        </Form.Group>       
+                        <br/>
+
+
                     <S.Ilable for = "nose" style={{fontFamily: "'yg-jalnan'"}}>강아지 사진</S.Ilable>
                     <div className="custom-file">
                       <Form.Control 

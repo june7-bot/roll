@@ -39,10 +39,10 @@ export default function Admin() {
                 </div>
                 <div style={{fontSize: 30, fontFamily: 'ImcreSoojin', textAlign: "center"}}>
                     <h4 className="card-title">관리자페이지</h4><br/><br/>
-                </div>
+              </div>
                     <a href={`/admin/transaction`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>거래 정보</S.btn></a>
                     <a href={`/admin/profile`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>회원 정보 조회</S.btn></a><br/><br/>
-                    <a href={`/admin/blockchain`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>블록 체인</S.btn></a>
+                    <a href={`/admin/blockchainlist`}><S.btn type="button" className="btn btn-inverse-danger  btn-lg" style={{fontFamily: "'Cafe24Oneprettynight"}}>블록 체인에 저장된 거래 목록 </S.btn></a>
               </div>
             </div>
           </div>

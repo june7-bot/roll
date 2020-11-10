@@ -15,6 +15,11 @@ import {
     SEEALLUSER_USER,
     PROCEEDLIST_USER,
     BCREGISTER_USER,
+    CANCEL_USER,
+    CANCELBYSELLER_USER,
+    COMPLETETRANSACTION_USER,
+    COMPLETEBLOCKTRANSACTION_USER,
+    BLOCKLIST_USER
 } from './types';
 
 import { USER_SERVER } from '../pages/Config';
@@ -193,4 +198,52 @@ export function blockRegister(dataToSubmit){
     }
 }
 
+export function cancelDog(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/mypage/cancel`, dataToSubmit)
+        .then(response => response.data);
+    
+    return {
+        type: CANCEL_USER,
+        payload: request
+    }
+}
 
+export function cancelDogBySeller(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/mypage/cancelbyseller`, dataToSubmit)
+        .then(response => response.data);
+    
+    return {
+        type: CANCELBYSELLER_USER,
+        payload: request
+    }
+}
+
+export function completeTransaction(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/mypage/completetransaction`, dataToSubmit)
+        .then(response => response.data);
+    
+    return {
+        type: COMPLETETRANSACTION_USER,
+        payload: request
+    }
+}
+
+export function completeBlockTransaction(dataToSubmit){
+    const request = axios.post(`${USER_SERVER}/admin/blockchainSuccess`, dataToSubmit)
+        .then(response => response.data);
+    
+    return {
+        type: COMPLETEBLOCKTRANSACTION_USER,
+        payload: request
+    }
+}
+
+export function BlockList(){
+    const request = axios.post(`${USER_SERVER}/admin/blockchainlist`)
+        .then(response => response.data);
+    
+    return {
+        type: BLOCKLIST_USER,
+        payload: request
+    }
+}

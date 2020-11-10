@@ -29,6 +29,7 @@ import Transaction from './pages/Admin/Transaction';
 import Profile from './pages/Admin/Profile';
 import CurrentStatus from './pages/User/CurrentStatus';
 import Blockchain from './pages/Admin/blockchain/src/Blockchain';
+import BlockchainList from './pages/Admin/blockchain/BlockchainList';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             <Route exact path="/admin/transaction" component = { Auth( Transaction , true, true) } />
             <Route exact path="/admin/profile" component = { Auth( Profile , true, true) } />
             <Route exact path="/admin/blockchain/:orderId" component = { Auth( Blockchain , true, true) } />
+            <Route exact path="/admin/blockchainlist" component = { Auth( BlockchainList , true, true) } />
             
        </Switch>
        </div>

@@ -1,17 +1,26 @@
 import React, {useEffect, useState  } from 'react'
 import { useDispatch } from "react-redux";
 import { adminTransaction } from '../../_actions/user_actions'
-
+import { useHistory } from "react-router-dom";
+   
 export default function Transaction() {
     const dispatch = useDispatch();
- 
+    const history = useHistory();
+
+    const routeChange = (x) =>{ 
+      console.log(x);
+      let path = `/admin/blockchain/${x}`; 
+      history.push(path);
+    }
+
     const [list, setList] = useState([]);
-   
   
+
       useEffect(() => {
   
         dispatch(adminTransaction()).then(response => {
             if (response.payload.success) {
+              console.log(response.payload.list);
                setList( response.payload.list )
                            }  
           else{
@@ -48,7 +57,8 @@ export default function Transaction() {
                       <td>{ list.dogId }</td>
                       <td>{ list.price }</td>
                       <td><label className="badge badge-success">거래 완료</label></td>
-                      <td><a className="badge badge-success" href = {`/admin/blockchain/${list.id}`}> 블록체인 등록하기</a></td>
+                      {/* `/admin/blockchain/${list.id}` */}
+                      <td><button onClick = { () => routeChange(list.id) } disabled={ list.orderStatus == "BLOCKCHAINSUCCESS" ? true : false }  > 블록체인 등록하기</button></td>
                     </tr>
                   )}
                   </tbody>

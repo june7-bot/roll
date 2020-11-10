@@ -118,7 +118,7 @@ function Register(props) {
           .oneOf([Yup.ref('password'), null], '비밀번호와 일치해야 합니다.')
           .required('비밀번호를 재입력해주세요'),
         acceptTerms : Yup.boolean()
-          .oneOf([true],'You must accept the terms and conditions')
+          .oneOf([true],'이용약관에 동의하셔야 합니다.')
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
