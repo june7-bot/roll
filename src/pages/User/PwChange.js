@@ -70,14 +70,11 @@ import styled from 'styled-components'
 
   }
 
-
-
 function PwChange(props) {
   const id = props.match.params.userId;
   const dispatch = useDispatch();
   return (
     
-
     <Formik
       initialValues={{
     

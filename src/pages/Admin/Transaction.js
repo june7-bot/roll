@@ -8,7 +8,6 @@ export default function Transaction() {
     const history = useHistory();
 
     const routeChange = (x) =>{ 
-      console.log(x);
       let path = `/admin/blockchain/${x}`; 
       history.push(path);
     }
@@ -57,7 +56,6 @@ export default function Transaction() {
                       <td>{ list.dogId }</td>
                       <td>{ list.price }</td>
                       <td><label className="badge badge-success">거래 완료</label></td>
-                      {/* `/admin/blockchain/${list.id}` */}
                       <td><button onClick = { () => routeChange(list.id) } disabled={ list.orderStatus == "BLOCKCHAINSUCCESS" ? true : false }  > 블록체인 등록하기</button></td>
                     </tr>
                   )}

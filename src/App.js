@@ -14,7 +14,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { Header } from './components';
+import { Header} from './components';
 import DogRegister from './pages/Dog/DogRegister';
 import DogList from './pages/Dog/DogList';
 import DogInfo from './pages/Dog/DogInfo';
@@ -36,7 +36,7 @@ function App() {
   return (
     <Router>
     <ThemeProvider theme={theme}>
-    <Header/>
+    <Header/> 
     <GlobalStyle />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
       <Switch>
@@ -65,6 +65,7 @@ function App() {
             
        </Switch>
        </div>
+   
     </ThemeProvider>
     </Router>
   );

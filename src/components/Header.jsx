@@ -4,6 +4,7 @@ import '../index.css';
 import { useSelector } from "react-redux";
 import imgA from '../assets/login.PNG';
 import { Button } from 'reactstrap';
+import ChatbotApp from '../chatbot/ChatbotApp'
 
 const S = {
   Wrapper: styled.div`
@@ -60,6 +61,10 @@ const S = {
     display: flex;
     justify-content: flex-end;
   `,
+  chatbot: styled.div`
+  position: absolute;
+  right: 0;
+`,
 };
 
 
@@ -71,7 +76,6 @@ export default function Header() {
     sessionStorage.clear();
     window.location.href = '/';
   }
-
 
   const [isScroll, setIsScroll] = useState(false);
 
@@ -90,7 +94,6 @@ export default function Header() {
       window.removeEventListener('mousewheel', handleScroll);
     };
   }, [handleScroll]);
-
 
   if(user.userData && user.userData.isAdmin ) { 
     return (
@@ -129,6 +132,7 @@ export default function Header() {
           </Button>
         
       </S.Header>
+      <S.chatbot> <ChatbotApp/> </S.chatbot> 
     </S.Wrapper>
   )}
   else if(user.userData && user.userData.isAuth){
@@ -170,6 +174,7 @@ export default function Header() {
       
       
     </S.Header>
+    <S.chatbot> <ChatbotApp/> </S.chatbot> 
   </S.Wrapper>
 )
 } else{
@@ -212,8 +217,10 @@ export default function Header() {
            로그인
           </Button>
         
+     
         
       </S.Header>
+     <S.chatbot> <ChatbotApp/> </S.chatbot> 
     </S.Wrapper>
   );
 };

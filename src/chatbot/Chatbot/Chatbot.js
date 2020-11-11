@@ -1,0 +1,184 @@
+import React, { useEffect } from 'react';
+import Axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveMessage } from '../../_actions/message_actions';
+import Message from './Sections/Message';
+import { List, Avatar } from 'antd';
+import Card from "./Sections/Card";
+import  {SmileOutlined}  from '@ant-design/icons';
+import AutoScroll from '@brianmcallister/react-auto-scroll';
+
+function Chatbot() {
+    const dispatch = useDispatch();
+    const messagesFromRedux = useSelector(state => state.message.messages)
+
+    useEffect(() => {
+
+        eventQuery('welcomeToMyWebsite')
+
+    }, [])
+
+
+    const textQuery = async (text) => {
+
+        //  First  Need to  take care of the message I sent     
+        let conversation = {
+            who: 'user',
+            content: {
+                text: {
+                    text: text
+                }
+            }
+        }
+
+        dispatch(saveMessage(conversation))
+
+        const textQueryVariables = {
+            text
+        }
+        try {
+            //I will send request to the textQuery ROUTE 
+            const response = await Axios.post('/chatbot/dialogflow/textQuery', textQueryVariables)
+
+            for (let content of response.data.fulfillmentMessages) {
+
+                conversation = {
+                    who: '도그블록',
+                    content: content
+                }
+
+                dispatch(saveMessage(conversation))
+            }
+
+
+        } catch (error) {
+            conversation = {
+                who: '도그블록',
+                content: {
+                    text: {
+                        text: " Error just occured, please check the problem"
+                    }
+                }
+            }
+
+            dispatch(saveMessage(conversation))
+
+
+        }
+
+    }
+
+    const eventQuery = async (event) => {
+
+        // We need to take care of the message Chatbot sent 
+        const eventQueryVariables = {
+            event
+        }
+        try {
+            //I will send request to the textQuery ROUTE 
+            const response = await Axios.post('/chatbot/dialogflow/eventQuery', eventQueryVariables)
+            for (let content of response.data.fulfillmentMessages) {
+
+                let conversation = {
+                    who: '도그블록',
+                    content: content
+                }
+
+                dispatch(saveMessage(conversation))
+            }
+
+
+        } catch (error) {
+            let conversation = {
+                who: '도그블록',
+                content: {
+                    text: {
+                        text: " Error just occured, please check the problem"
+                    }
+                }
+            }
+            dispatch(saveMessage(conversation))
+        }
+
+    }
+
+    const keyPressHanlder = (e) => {
+        if (e.key === "Enter") {
+
+            if (!e.target.value) {
+                return alert('뭔가 입력하셔야 합니다')
+            }
+
+            //we will send request to text query route 
+            textQuery(e.target.value)
+
+            e.target.value = "";
+        }
+    }
+
+    const renderCards = (cards) => {
+        return cards.map((card,i) => <Card key={i} cardInfo={card.structValue} />)
+    }
+
+    const renderOneMessage = (message, i) => {
+         //console.log('message', message)
+        if (message.content && message.content.text && message.content.text.text) {
+            return <Message key={i} who={message.who} text={message.content.text.text}  />
+        } else if (message.content && message.content.payload.fields.card) {
+
+            const AvatarSrc = message.who === '도그블록' ? <SmileOutlined/> : <SmileOutlined/>
+
+            return <div>
+                <List.Item style={{ padding: '1rem' }}>
+                    <List.Item.Meta
+                   
+                        avatar={<Avatar icon={AvatarSrc} />}
+                        title= {message.who}
+                        description={renderCards(message.content.payload.fields.card.listValue.values)}
+                    />
+                </List.Item>
+            </div>
+        }
+
+        // template for card message 
+    }
+
+    const renderMessage = (returnedMessages) => {
+
+        if (returnedMessages) {
+            return returnedMessages.map((message, i) => {
+                return renderOneMessage(message, i);
+            })
+        } else {
+            return null;
+        }
+    }
+
+
+    return (
+        <div style={{
+            height: 400, width: 300,
+            border: '3px solid black', borderRadius: '7px'
+        }}>
+         <AutoScroll>
+            <div style={{ height: 310, width: '100%'}}>
+         
+                {renderMessage(messagesFromRedux)}
+               
+            </div>
+         </AutoScroll>
+            <input
+                style={{
+                    margin: 0, width: '100%', height: 50,
+                    borderRadius: '4px', padding: '5px', fontSize: '1rem'
+                }}
+                placeholder="Send a message..."
+                onKeyPress={keyPressHanlder}
+                type="text"
+            />
+
+        </div>
+    )
+}
+
+export default Chatbot;

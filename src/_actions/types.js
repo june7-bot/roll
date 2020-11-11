@@ -22,3 +22,4 @@ export const CANCELBYSELLER_USER = 'cancelDogBySeller_user';
 export const COMPLETETRANSACTION_USER = 'completeTransaction_user';
 export const COMPLETEBLOCKTRANSACTION_USER = 'completeBlockTransaction_user';
 export const BLOCKLIST_USER = 'BlockList_user';
+export const SAVE_MESSAGE = 'save_message';
