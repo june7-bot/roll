@@ -33,11 +33,17 @@ useEffect(() => {
  
     return (
       <div class="container" style={{fontFamily: "'Cafe24Oneprettynight"}}>
-          <CardGroup class="card-columns">
+          <br/><br/>
+        <a href = "/bigdog" >대형견</a> &nbsp;&nbsp;&nbsp;
+        <a href = "/middog" >중형견</a> &nbsp;&nbsp;&nbsp;
+        <a href = "/smalldog" >소형견</a>
+        <br/><br/><br/>
+        
+          <CardGroup  class="card-columns"  >
             { items.map ( item =>
-
-            <Card key = {item.id} style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ item.photo }` } width = {250} />
+//   
+            <Card key = {item.id} style={{width: '18rem'}}>
+              <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ item.photo }` } style = {{objectFit : 'cover'}} />
               <Card.Body style={{"align-items": "right"}}>
                 <Card.Title>{ item.name }</Card.Title>
                 <Card.Text>
@@ -50,7 +56,7 @@ useEffect(() => {
             </Card>
 
             )}
-          </CardGroup>
-      </div>
+          </CardGroup> 
+      </div> 
     )
 }

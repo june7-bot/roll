@@ -72,15 +72,49 @@ const S = {
   }
 
   export default function DogRegister(props) {
-    const dogkind = ["비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔","비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔","골든 리트리버", "시베리안 허스키", "보더콜리", "사모예드" , "말라뮤트" ]
+    const dogkind = ["비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔","스피츠","시바견", "웰시코기" , "프렌치불독", "비글", "골든 리트리버", "시베리안 허스키", "보더콜리", "사모예드" , "말라뮤트" ]
+    const big = ["골든 리트리버", "시베리안 허스키", "보더콜리", "사모예드" , "말라뮤트"]
+    const mid = ["스피츠","시바견", "웰시코기" , "프렌치불독", "비글"]
+    const small = ["비숑","포메라니안", "푸들" , "치와와", "닥스훈트", "말티즈", "시츄", "요크셔"]
+    
     const doggender = ["남아", "여아"]
     const prevent = ["1차접종 완료", "2차접종 완료", "3차접종 완료", "4차접종 완료", "5차접종 완료"]
     
+
     const dispatch = useDispatch();
     const id = useSelector(state => state.user.userData)
     const [file, setFile] = useState('');
     const [nose, setNose] = useState('');
     const [birth, setBirth] = useState('');
+
+
+  
+const checkSize = (x) => {
+console.log(x);
+let test;
+console.log(big[0]);
+  for (let index = 0; index < big.length; index++) {
+    if( x == big[index] ){
+      test = "BIG" 
+
+    }
+ }
+ for (let index = 0; index < mid.length; index++) {
+   if(x == mid[index] ){
+    test = "MID"
+
+   }
+}
+for (let index = 0; index < small.length; index++) {
+ if( x == small[index] ){
+  test = "SMALL"
+
+ }
+
+}
+return test;
+}
+
 
       return (
    
@@ -105,11 +139,10 @@ const S = {
   
           
             onSubmit={(values, { setSubmitting }) => {
-          
+                 
               let formData =  new FormData();
-              console.log(values.name);
-              console.log(values.kind);
-              console.log(values.gender);
+              const size = checkSize(values.kind);
+              
               formData.append('name', values.name);
               formData.append('price', values.price);
               formData.append('kind', values.kind);
@@ -120,8 +153,8 @@ const S = {
               formData.append('picture', file);
               formData.append('birth', birth);
               formData.append('nose', nose);
-              
-           
+              formData.append('size', size);
+                     
               setTimeout(() => {
   
                 dispatch(registerDog(formData)).then(response => {

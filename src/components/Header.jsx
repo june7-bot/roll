@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import imgA from '../assets/login.PNG';
 import { Button } from 'reactstrap';
 import ChatbotApp from '../chatbot/ChatbotApp'
+import CbModal from '../chatbot/CbModal';
 
 const S = {
   Wrapper: styled.div`
@@ -20,6 +21,7 @@ const S = {
   `,
   Header: styled.header`
     width: 100%;
+    
     max-width: 1180px;
     margin: auto;
     transition: all 0.2s ease-in-out;
@@ -40,6 +42,7 @@ const S = {
     flex: 0 0 50%;
     font-weight: 900;
     max-width: 50%;
+    height : 30%;
     font-size: 1rem;
     display: flex;
     justify-content: center;
@@ -54,6 +57,17 @@ const S = {
       opacity: 0.5;
     }
   `,
+  NavigationItem2: styled.a`
+    color: ${props => props.theme.palette.white};
+    color: ${({ isScroll, theme }) =>
+      isScroll = theme.palette.black };
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+    height : 90;
+    flex-direction : column; 
+  `,
   ButtonWrapper: styled.div`
     flex: 0 0 300px;
     max-width: 17%;
@@ -65,11 +79,26 @@ const S = {
   position: absolute;
   right: 0;
 `,
+DropdownContent: styled.a`
+color: black;
+font-size: 0.8rem;
+ display : flex;
+ flex-direction : column; 
+}
+  `,
+NavigationForDog: styled.div`
+&:hover {
+  S.DropdownContent : { display : block}
+}
+`,
+Dropdown: styled.div`
+display : flex
+`
 };
 
 
 export default function Header() {
-
+  const [hidden, setHidden] = useState(true);
   const user = useSelector(state => state.user)
 
   const logoutHandler = () => {
@@ -120,6 +149,7 @@ export default function Header() {
             </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
+            
                  강아지들
             </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </S.Navigation>
@@ -130,9 +160,9 @@ export default function Header() {
           <Button onClick={ logoutHandler } fill="solid" type="button" className="btn btn-gradient-secondary btn-fw" style={{fontFamily: "Cafe24Oneprettynight"}}>
            로그아웃
           </Button>
-        
+          <CbModal/>
       </S.Header>
-      <S.chatbot> <ChatbotApp/> </S.chatbot> 
+   
     </S.Wrapper>
   )}
   else if(user.userData && user.userData.isAuth){
@@ -172,9 +202,9 @@ export default function Header() {
          로그아웃
         </Button>
       
-      
+        <CbModal/>
     </S.Header>
-    <S.chatbot> <ChatbotApp/> </S.chatbot> 
+   
   </S.Wrapper>
 )
 } else{
@@ -203,10 +233,17 @@ export default function Header() {
             <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
                  강아지 등록
             </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            <S.NavigationItem href = {'/doglist'}  isScroll={isScroll}>
+      <S.Dropdown onMouseLeave= {()=> setHidden(!hidden) }>
+            <S.NavigationItem2  href = {'/doglist'}  onMouseOver={() => setHidden(!hidden)} isScroll={isScroll}>
                  강아지들
-            </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </S.NavigationItem2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <S.DropdownContent hidden={hidden} >
+            <a>대형견</a><br/><br/>
+            <a>중형견</a><br/><br/>
+            <a>소형견</a><br/><br/>
+		        </S.DropdownContent>
+        
+    </S.Dropdown>
         </S.Navigation>
     
         
@@ -217,10 +254,19 @@ export default function Header() {
            로그인
           </Button>
         
-     
-        
+      <CbModal/>
       </S.Header>
-     <S.chatbot> <ChatbotApp/> </S.chatbot> 
+     {/* <S.chatbot> */}
+
+{/* <iframe
+    allow="microphone;"
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/211aa467-f1ca-4004-9727-0023d4b11b64">
+</iframe> */}
+     
+       {/* <ChatbotApp/>
+      </S.chatbot>  */}
     </S.Wrapper>
   );
 };

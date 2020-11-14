@@ -30,7 +30,10 @@ import Profile from './pages/Admin/Profile';
 import CurrentStatus from './pages/User/CurrentStatus';
 import Blockchain from './pages/Admin/blockchain/src/Blockchain';
 import BlockchainList from './pages/Admin/blockchain/BlockchainList';
-
+import Map from './pages/Map/MapForUser'
+import SmallDog from './pages/Dog/SmallDogList'
+import MidDogList from './pages/Dog/MidDogList';
+import BigDogList from './pages/Dog/BigDogList';
 
 function App() {
   return (
@@ -62,6 +65,10 @@ function App() {
             <Route exact path="/admin/profile" component = { Auth( Profile , true, true) } />
             <Route exact path="/admin/blockchain/:orderId" component = { Auth( Blockchain , true, true) } />
             <Route exact path="/admin/blockchainlist" component = { Auth( BlockchainList , true, true) } />
+            <Route exact path="/map" component = { Auth( Map , false, false) } />
+            <Route exact path="/smallDog" component = { Auth( SmallDog , true, false) } />
+            <Route exact path="/midDog" component = { Auth( MidDogList , true, false) } />
+            <Route exact path="/bigDog" component = { Auth( BigDogList , true, false) } />
             
        </Switch>
        </div>

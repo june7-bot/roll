@@ -126,14 +126,14 @@ function Chatbot() {
             return <Message key={i} who={message.who} text={message.content.text.text}  />
         } else if (message.content && message.content.payload.fields.card) {
 
-            const AvatarSrc = message.who === '도그블록' ? <SmileOutlined/> : <SmileOutlined/>
+            // const AvatarSrc = message.who === '도그블록' ? <SmileOutlined/> : <SmileOutlined/>
 
             return <div>
-                <List.Item style={{ padding: '1rem' }}>
+                <List.Item style={{ padding: '1rem' }}   >
                     <List.Item.Meta
                    
-                        avatar={<Avatar icon={AvatarSrc} />}
-                        title= {message.who}
+                        //avatar={<Avatar icon={AvatarSrc} />}
+                        title= {message.who }
                         description={renderCards(message.content.payload.fields.card.listValue.values)}
                     />
                 </List.Item>
@@ -172,7 +172,7 @@ function Chatbot() {
                     margin: 0, width: '100%', height: 50,
                     borderRadius: '4px', padding: '5px', fontSize: '1rem'
                 }}
-                placeholder="Send a message..."
+                placeholder="채팅 입력해주세요"
                 onKeyPress={keyPressHanlder}
                 type="text"
             />

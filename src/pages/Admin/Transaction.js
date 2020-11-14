@@ -55,8 +55,8 @@ export default function Transaction() {
                       <td>{ list.buyer }</td>
                       <td>{ list.dogId }</td>
                       <td>{ list.price }</td>
-                      <td><label className="badge badge-success">거래 완료</label></td>
-                      <td><button onClick = { () => routeChange(list.id) } disabled={ list.orderStatus == "BLOCKCHAINSUCCESS" ? true : false }  > 블록체인 등록하기</button></td>
+                      <td>{ list.orderStatus === 'BLOCKCHAINSUCCESS' ? <label className="badge badge-success">거래 완료</label> : <label className="badge badge-success">거래 진행중</label>  } </td>
+                      {/* <td><button onClick = { () => routeChange(list.id) } disabled={ list.orderStatus == "BLOCKCHAINSUCCESS" ? true : false }  > 블록체인 등록하기</button></td> */}
                     </tr>
                   )}
                   </tbody>
