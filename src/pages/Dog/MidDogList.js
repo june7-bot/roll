@@ -63,7 +63,7 @@ useEffect(() => {
             { items.map ( item =>
 
             <Card key = {item.id} style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ item.photo }` } width = {250} />
+              <Card.Img variant="top" src={ `http://3.35.3.31:8080/upload/dogs/${ item.photo }` } width = {250} />
               <Card.Body style={{"align-items": "right"}}>
                 <Card.Title>{ item.name }</Card.Title>
                 <Card.Text>

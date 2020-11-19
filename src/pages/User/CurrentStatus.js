@@ -26,12 +26,12 @@ export default function CurrentStatus(props) {
           let dataToSubmit = {
             "id" : orderId
           }  
-         
+            console.log('1차검사');
           dispatch(completeTransaction(dataToSubmit)).then(response => {
-
+            console.log('2차검사');
             if (response.payload.success) {
               setBuyer(response.payload.buyer)
-              
+              console.log('3차검사');
               }else{
                    alert("에러")
               }           
@@ -113,13 +113,14 @@ export default function CurrentStatus(props) {
           { seller.map ( list => 
           
               <Card key = {list.orderId} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }` } width = {250} />
+                <Card.Img variant="top" src={ `http://3.35.3.31:8080/upload/dogs/${ list.photo }` } width = {250} />
                   <Card.Body>
 
                     <Card.Title>{ list.name }</Card.Title>
                     <Card.Text>
                       이름:{ list.name }<br/>
                       분양가격:{list.price}원
+                    
                     </Card.Text>
                     <Button  className="btn btn-danger" onClick =  { () =>  cancelBySeller(list.orderId)  } >분양 취소하기 </Button>
                 
@@ -138,7 +139,7 @@ export default function CurrentStatus(props) {
            
          <Card key = {list.orderId} style={{ width: '18rem' }}>
              
-            <Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ list.photo }` } width = {250} />
+            <Card.Img variant="top" src={`http://3.35.3.31:8080/upload/dogs/${ list.photo }` } width = {250} />
             <Card.Body>
 
               <Card.Title>{ list.name }</Card.Title>

@@ -39,7 +39,7 @@ useEffect(() => {
                 <Card.Title> 주문 번호 : { item.orderId }</Card.Title>
                  <Card.Text>
                 {/* 구매자 정보 :{ item.user.email }<br/> */}
-                강아지 출생증명: <img src={ `http://127.0.0.1:8080/upload/dogs/${ item.dogNose }` } width = {250}  />  <br/>
+                강아지 출생증명: <img src={ `http://3.35.3.31:8080/upload/dogs/${ item.dogNose }` } width = {250}  />  <br/>
                 강아지 코지문 : { item.dogBirth }       
                 </Card.Text> 
 

@@ -233,17 +233,11 @@ export default function Header() {
             <S.NavigationItem href = {'/dogregister'}  isScroll={isScroll}>
                  강아지 등록
             </S.NavigationItem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <S.Dropdown onMouseLeave= {()=> setHidden(!hidden) }>
+
             <S.NavigationItem2  href = {'/doglist'}  onMouseOver={() => setHidden(!hidden)} isScroll={isScroll}>
                  강아지들
             </S.NavigationItem2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <S.DropdownContent hidden={hidden} >
-            <a>대형견</a><br/><br/>
-            <a>중형견</a><br/><br/>
-            <a>소형견</a><br/><br/>
-		        </S.DropdownContent>
-        
-    </S.Dropdown>
+
         </S.Navigation>
     
         

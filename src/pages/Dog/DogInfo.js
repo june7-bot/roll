@@ -60,7 +60,7 @@ export default function DogInfo(props) {
                     <h4 className="card-title">반려견정보</h4><br/><br/>
               </div>   
               <Card key = {items.id} style={{alignItems: "center"}}>
-              {<Card.Img variant="top" src={ `http://127.0.0.1:8080/upload/dogs/${ items.photo }` } width = {250} />}
+              {<Card.Img variant="top" src={ `http://3.35.3.31:8080/upload/dogs/${ items.photo }` } width = {250} />}
               <Card.Body style={{"align-items": "center", border: 1}}>
                 <Card.Text>
                 <table className="table table-hovored"> 
